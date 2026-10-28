@@ -15,7 +15,7 @@ async function makeStory(){
   // Draw the full, individually generated 1254px illustration without cropping.
   const ratio=Math.min(640/img.naturalWidth,670/img.naturalHeight),w=img.naturalWidth*ratio,h=img.naturalHeight*ratio;
   ctx.drawImage(img,(1080-w)/2,345,w,h);
-  ctx.fillStyle='#fffdf4';ctx.fillRect(340,1010,400,50);ctx.fillStyle='#2B2430';ctx.font='bold 32px sans-serif';ctx.fillText('unic MEET',540,1045);
+  ctx.fillStyle='#2B2430';
   function wrapped(text,y,size,maxWidth,lineHeight){ctx.font=`bold ${size}px sans-serif`;let line='';for(const char of text){if(ctx.measureText(line+char).width>maxWidth){ctx.fillText(line,540,y);y+=lineHeight;line='';}line+=char;}if(line)ctx.fillText(line,540,y);return y+lineHeight;}
   const end=wrapped(type.nm,1110,52,790,72);wrapped(type.catch,end+25,32,780,48);
   ctx.fillStyle='#2B2430';ctx.font='bold 65px sans-serif';ctx.fillText('あなたは何タイプ？',540,1470);

@@ -1,122 +1,134 @@
 [
   {
     "id": "01",
-    "source_png": "exec-2b37feb3-694f-4a0b-9b25-ff6ed031e5cc.png",
+    "source_png": "exec-b66599fe-1ec0-44a2-9d69-0cd121f15c07.png",
     "file": "type-01.webp",
     "width": 1254,
     "height": 1254,
-    "bytes": 62064,
+    "bytes": 61444,
     "thumbnail": "type-01-384.webp",
-    "thumbnail_bytes": 9394
+    "thumbnail_bytes": 9444,
+    "composition": "original-inspired portrait, no per-animal wordmark"
   },
   {
     "id": "02",
-    "source_png": "exec-c732b897-7160-45ec-bf5e-500a9d7b7ce3.png",
+    "source_png": "exec-9eaf6823-6154-4947-94c4-319948a245d4.png",
     "file": "type-02.webp",
     "width": 1254,
     "height": 1254,
-    "bytes": 125066,
+    "bytes": 118236,
     "thumbnail": "type-02-384.webp",
-    "thumbnail_bytes": 17570
+    "thumbnail_bytes": 15982,
+    "composition": "original-inspired portrait, no per-animal wordmark"
   },
   {
     "id": "03",
-    "source_png": "exec-3e994543-d192-41a3-93ea-3cbf6488cb31.png",
+    "source_png": "exec-0c6f0061-50a8-454f-9200-d46920d0a51f.png",
     "file": "type-03.webp",
     "width": 1254,
     "height": 1254,
-    "bytes": 54942,
+    "bytes": 58300,
     "thumbnail": "type-03-384.webp",
-    "thumbnail_bytes": 8810
+    "thumbnail_bytes": 9470,
+    "composition": "original-inspired portrait, no per-animal wordmark"
   },
   {
     "id": "04",
-    "source_png": "exec-7a8887ce-1e47-4e65-a35d-bad8923e7f4d.png",
+    "source_png": "exec-f924d800-c540-4ef0-82a9-c4baaf514c5d.png",
     "file": "type-04.webp",
     "width": 1254,
     "height": 1254,
-    "bytes": 84650,
+    "bytes": 143878,
     "thumbnail": "type-04-384.webp",
-    "thumbnail_bytes": 10152
+    "thumbnail_bytes": 13698,
+    "composition": "original-inspired portrait, no per-animal wordmark"
   },
   {
     "id": "05",
-    "source_png": "exec-3b929f2f-334f-4a47-838b-745ae9e4ee30.png",
+    "source_png": "exec-5e0ab4bc-c734-4f33-ae2c-b5c8c9a78a58.png",
     "file": "type-05.webp",
     "width": 1254,
     "height": 1254,
-    "bytes": 122918,
+    "bytes": 185064,
     "thumbnail": "type-05-384.webp",
-    "thumbnail_bytes": 12952
+    "thumbnail_bytes": 17510,
+    "composition": "original-inspired portrait, no per-animal wordmark"
   },
   {
     "id": "06",
-    "source_png": "exec-6c91fa90-4f7d-4bee-92e4-9a19e158211a.png",
+    "source_png": "exec-15dd6c19-3db4-4648-a39f-e55b776afc90.png",
     "file": "type-06.webp",
     "width": 1254,
     "height": 1254,
-    "bytes": 106242,
+    "bytes": 120806,
     "thumbnail": "type-06-384.webp",
-    "thumbnail_bytes": 14276
+    "thumbnail_bytes": 16250,
+    "composition": "original-inspired portrait, no per-animal wordmark"
   },
   {
     "id": "07",
-    "source_png": "exec-e33df2b8-4939-40f9-9eef-1482c3da8ec2.png",
+    "source_png": "exec-a8a97327-ce2f-4125-acb8-d27697bd453c.png",
     "file": "type-07.webp",
     "width": 1254,
     "height": 1254,
-    "bytes": 113268,
+    "bytes": 103696,
     "thumbnail": "type-07-384.webp",
-    "thumbnail_bytes": 16918
+    "thumbnail_bytes": 15608,
+    "composition": "original-inspired portrait, no per-animal wordmark"
   },
   {
     "id": "08",
-    "source_png": "exec-8188c3f1-53b3-4627-9471-51e93a51fef6.png",
+    "source_png": "exec-c07391a3-be6c-4ace-aa10-8fdd13e5bdb1.png",
     "file": "type-08.webp",
     "width": 1254,
     "height": 1254,
-    "bytes": 77902,
+    "bytes": 91756,
     "thumbnail": "type-08-384.webp",
-    "thumbnail_bytes": 13776
+    "thumbnail_bytes": 13940,
+    "composition": "original-inspired portrait, no per-animal wordmark"
   },
   {
     "id": "09",
-    "source_png": "exec-c64dba8b-d160-4ff2-b9a0-96827bb5213e.png",
+    "source_png": "exec-3e749855-daae-4942-aa05-7ebc1e4fe131.png",
     "file": "type-09.webp",
     "width": 1254,
     "height": 1254,
-    "bytes": 67430,
+    "bytes": 78638,
     "thumbnail": "type-09-384.webp",
-    "thumbnail_bytes": 9816
+    "thumbnail_bytes": 10686,
+    "composition": "original-inspired portrait, no per-animal wordmark"
   },
   {
     "id": "10",
-    "source_png": "exec-d82268c4-79e8-42f0-b23c-b933be37f275.png",
+    "source_png": "exec-58568ac9-66e6-4eb9-a32f-ebab71d2a0d3.png",
     "file": "type-10.webp",
     "width": 1254,
     "height": 1254,
-    "bytes": 95432,
+    "bytes": 103628,
     "thumbnail": "type-10-384.webp",
-    "thumbnail_bytes": 13504
+    "thumbnail_bytes": 13912,
+    "composition": "original-inspired portrait, no per-animal wordmark"
   },
   {
     "id": "11",
-    "source_png": "exec-e3c1ecaa-6746-4529-a892-1899dff94717.png",
+    "source_png": "exec-ae07ff9d-ffc3-40c7-bbd3-36bf8ae44683.png",
     "file": "type-11.webp",
     "width": 1254,
     "height": 1254,
-    "bytes": 115682,
+    "bytes": 133656,
     "thumbnail": "type-11-384.webp",
-    "thumbnail_bytes": 10246
+    "thumbnail_bytes": 11538,
+    "composition": "original-inspired portrait, no per-animal wordmark"
   },
   {
     "id": "12",
-    "source_png": "exec-6fa71444-1792-4226-b085-469cacec47a7.png",
+    "source_png": "exec-5991862d-363e-4f48-a5bf-adf2a0dbc6bc.png",
     "file": "type-12.webp",
     "width": 1254,
     "height": 1254,
-    "bytes": 67922,
+    "bytes": 89378,
     "thumbnail": "type-12-384.webp",
-    "thumbnail_bytes": 10130
+    "thumbnail_bytes": 12274,
+    "composition": "original-inspired portrait, no per-animal wordmark"
   }
 ]

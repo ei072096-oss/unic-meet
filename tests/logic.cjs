@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
 const html=fs.readFileSync(__dirname+'/../index.html','utf8'),source=html.match(/<script>([\s\S]*?)<\/script>/)[1];
-const c=vm.createContext({URL,URLSearchParams,Intl,Date,console,location:{href:'https://example.com/?private=discard#old'}});vm.runInContext(source,c);
+const c=vm.createContext({URL,URLSearchParams,Intl,Date,console,UnicPillars:require('../four-pillars'),location:{href:'https://example.com/?private=discard#old'}});vm.runInContext(source,c);
 vm.runInContext(`
 const found=new Map();let seed=42;function rand(){seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;}
 for(let i=0;i<50000&&found.size<12;i++){const a=[];TYPE_ORDER.forEach(q=>a[q]=1+Math.floor(rand()*5));a[36]=1;a[37]=1;st.ans=a;st.birth={date:'2000-02-29',noTime:true};const r=compute();if(!found.has(r.type.id))found.set(r.type.id,a);}
@@ -22,7 +22,7 @@ for(let timing=1;timing<=5;timing++)for(let concern=1;concern<=5;concern++){
  if(r.type.n!==original.type.n||r.sub.n!==original.sub.n)throw Error('service answers influence animal');
  const html=actionHTML(r);if((timing<=2)!==html.includes('結婚相談所という選択肢'))throw Error('marriage targeting');
 }
-st.birth={date:'1980-01-01',time:'12:34',noTime:false};if(compute().type.n!==original.type.n||compute().sh!==null)throw Error('birthday affects animal');
+st.birth={date:'1980-01-01',time:'12:34',noTime:false};if(compute().type.n!==original.type.n||!compute().sh.day)throw Error('birthday affects animal');
 st.ans[37]=1;const a=compute();st.ans[37]=3;const b=compute();if(a.type.n!==b.type.n||a.recommendation.main===b.recommendation.main)throw Error('personal advice');
 if(safeHttps('javascript:alert(1)')||safeHttps('http://example.com'))throw Error('unsafe config URL');
 if(!consultationHTML().includes('disabled')||!officialLineHTML().includes('disabled'))throw Error('missing URL handling');

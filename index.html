@@ -130,20 +130,36 @@ a{color:inherit}
 .thumbs div{aspect-ratio:1/1}
 .form input{max-width:100%;min-width:0}
 .form input:disabled{opacity:.5}
-.animal{position:relative;display:block;padding-bottom:16px;width:100%;height:100%;overflow:hidden}
+.animal{position:relative;display:block;padding-bottom:0;width:100%;height:100%;overflow:hidden}
 .animal .brand{position:absolute;left:0;right:0;bottom:0;background:#fffdf4ed;color:#2b2430;text-align:center;font-family:Arial,sans-serif;font-size:9px;line-height:1.5;white-space:nowrap;letter-spacing:.02em}
 .res-hero .pic .animal img,.thumbs .animal img,.mini .animal img,.ptable .animal img{width:100%;height:100%;object-fit:contain;object-position:center;border-radius:0}
 .res-hero .pic .brand{font-size:14px}
-.res-hero .pic .animal{padding-bottom:24px}
+.res-hero .pic .animal{padding-bottom:0}
 .mini .animal{width:56px;height:56px;flex:none}
 .ptable .animal{width:58px;height:58px;max-width:100%}
 .thumbs>div{aspect-ratio:1/1}
 button:disabled{opacity:.55;cursor:default;box-shadow:none}
 #story-output img{display:block;width:100%;max-width:270px;height:auto;margin:16px auto;border-radius:16px}
 .ans button,.btn{min-height:48px}
+/* Quiet, editorial service presentation */
+.form select,.form input[type=text]{width:100%;font:inherit;padding:12px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);margin-top:6px}
+.eyebrow{font-size:10px!important;font-weight:700;letter-spacing:.16em;color:var(--sub);line-height:1.7}
+.service-intro{padding:26px 4px 24px}
+.service-intro h3{font-size:30px;line-height:1.5;letter-spacing:.03em;margin:12px 0 18px}
+.service-intro>p:last-child{font-size:14px;line-height:2;color:var(--sub)}
+.service-grid{display:grid;gap:16px}.service-card{padding:25px 22px;border:1px solid var(--line);border-radius:22px;background:var(--card)}
+.service-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}.service-card-top>span{font:italic 30px Georgia,serif;color:#b39383}
+.service-name{font-size:12px!important;color:var(--sub);margin-bottom:8px!important}.service-card h3{font-size:20px;line-height:1.6;letter-spacing:.01em;margin-bottom:12px}
+.service-description{font-size:14px!important;color:var(--sub);line-height:1.9}.service-price{font-size:35px;font-weight:700;letter-spacing:.02em;margin-top:24px}.service-price span{font-size:12px;font-weight:500;margin-left:5px}.service-spec{font-size:12px!important;color:var(--sub);margin:0 0 18px!important}
+.service-card details{border-top:1px solid var(--line);padding-top:16px;font-size:13px}.service-card summary{cursor:pointer}.service-card details p,.service-card li{font-size:13px}
+.consult-card{padding:28px 22px;background:#f1e9e2;color:#352f2b;border-radius:24px}.consult-card h3{font-size:23px;margin:14px 0 18px;line-height:1.6}.consult-card p{line-height:1.9}.consult-card .btn{background:#38332f;color:#fff;box-shadow:none;margin-top:22px;font-size:14px}
+.calendar-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px 18px}.birth-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:20px 0}.birth-pillars>div{text-align:center;background:var(--bg);padding:13px 2px;border-radius:12px}.birth-pillars small{display:block;font-size:11px;color:var(--sub)}.birth-pillars strong{display:block;font-size:19px;line-height:1.4;overflow-wrap:anywhere;margin-top:6px}.stem-reading{display:flex;gap:15px;align-items:center;border-top:1px solid var(--line);padding:22px 0 16px}.stem-sign{font-family:serif;font-size:48px;color:#ab806c}.stem-reading h3{font-size:15px;line-height:1.8}.calendar-details{font-size:12px;border-top:1px solid var(--line);margin-top:18px;padding-top:14px}.calendar-details summary{cursor:pointer;color:var(--sub)}.calendar-details p{font-size:12px!important;line-height:1.9;margin-top:10px}.boundary-note{font-size:12px!important;background:var(--bg);border-radius:10px;padding:12px}
+.action{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 22px}.action h3{font-size:21px;line-height:1.6;margin-bottom:12px}.action p{font-size:14px;line-height:1.9;color:var(--sub)}
 </style></head>
 <body><div id="app"></div>
 <script src="site-config.js"></script>
+<script src="vendor/lunar-1.7.7.js"></script>
+<script src="four-pillars.js"></script>
 <script>
 /* ===== 設定 ===== */
 const CONFIG={
@@ -523,7 +539,7 @@ function reasons(k,D){
   return R.slice(0,3);
 }
 
-function calcShichu(){return null;} // Accurate solar-term/timezone calculation is not implemented.
+function calcShichu(birth){return UnicPillars.calculate(birth);}
 
 // 回答×四柱の統合（ギャップ検出）
 function integrate(D,sh){
@@ -584,7 +600,7 @@ const TYPE_ORDER=[0,2,3,5,6,9,10,21];
 const ORDER=[...TYPE_ORDER,36,37]; // A/B/Cを混ぜて出題し、意図を悟らせない
 const st={screen:'intro',pos:0,ans:[],birth:null,res:null};
 const app=()=>document.getElementById('app');
-const im=(id,size='56px')=>IMGS[id]?`<span class="animal"><img src="${IMGS[id]}" srcset="assets/type-${id}-384.webp 384w, ${IMGS[id]} 1254w" sizes="${size}" alt="${AN[Number(id)-1]}" width="1254" height="1254" loading="lazy" decoding="async"><b class="brand">unic MEET</b></span>`:'';
+const im=(id,size='56px')=>IMGS[id]?`<span class="animal"><img src="${IMGS[id]}" srcset="assets/type-${id}-384.webp 384w, ${IMGS[id]} 1254w" sizes="${size}" alt="${AN[Number(id)-1]}" width="1254" height="1254" loading="lazy" decoding="async"></span>`:'';
 const stars=n=>'★'.repeat(n)+'☆'.repeat(5-n);
 const AN=['うさぎ','ライオン','白鳥','ペンギン','コアラ','ねこ','フクロウ','イルカ','オオカミ','キツネ','パンダ','馬'];
 let lock=false;
@@ -631,16 +647,17 @@ function validateBirth(value){
   const [y,m,d]=value.split('-').map(Number),date=new Date(0);
   date.setUTCFullYear(y,m-1,d);date.setUTCHours(0,0,0,0);
   if(y<1||date.getUTCFullYear()!==y||date.getUTCMonth()!==m-1||date.getUTCDate()!==d)return '存在しない日付です。月末の日数やうるう年をご確認ください。';
+  if(y<1900||y>2099)return '対応している生年月日は1900〜2099年です。';
   if(value>todayJST())return '未来の生年月日は入力できません。日付をご確認ください。';
   return '';
 }
 function birthForm(){
   const b=st.birth||{};
   return `<div class="hero"><h1 class="catch" style="font-size:22px">STEP 1：生年月日を入力</h1><p class="lead">このあと、恋愛傾向・価値観8問と、結婚希望時期・現在のお悩み各1問に回答します。</p></div>
-  <div class="form"><div class="row"><label for="bd">生年月日（西暦・月・日／必須）</label><input id="bd" type="date" required aria-describedby="birth-purpose birth-error" value="${b.date||''}" max="${todayJST()}"></div>
-  <p id="birth-purpose" class="note">生年月日・出生時刻は四柱推命の補足用です。暦計算は現在準備中です。入力情報はこの画面のメモリ内でのみ扱い、サーバー送信・ブラウザ保存・共有URLへの記載は行いません。</p>
+  <div class="form"><div class="row"><label for="bd">生年月日（西暦・月・日／必須）</label><input id="bd" type="date" required min="1900-01-01" aria-describedby="birth-purpose birth-error" value="${b.date||''}" max="${todayJST()}"></div>
+  <p id="birth-purpose" class="note">生年月日・出生時刻・出生地のタイムゾーンは四柱推命の補足に使用します。入力情報はこの画面のメモリ内でのみ扱い、サーバー送信・ブラウザ保存・共有URLへの記載は行いません。</p>
   <div class="row"><label for="bt">出生時刻（任意）</label><input id="bt" type="time" value="${b.time||''}" ${b.noTime!==false?'disabled':''}><label class="chk"><input id="bn" type="checkbox" ${b.noTime!==false?'checked':''}> 不明</label></div>
-  <p class="note">年柱・月柱・日柱・時柱は現在準備中です。出生時刻が不明の場合は推測しません。動物タイプは質問への回答だけで決まります。</p>
+  <div class="row"><label for="bz">出生地のタイムゾーン</label><select id="bz">${[['Asia/Tokyo','日本（Asia/Tokyo）'],['Asia/Seoul','韓国（Asia/Seoul）'],['Asia/Shanghai','中国（Asia/Shanghai）'],['Asia/Taipei','台湾（Asia/Taipei）'],['America/New_York','ニューヨーク'],['America/Los_Angeles','ロサンゼルス'],['Europe/London','ロンドン'],['Europe/Paris','パリ'],['Australia/Sydney','シドニー'],['UTC','UTC'],['other','その他（IANA名を入力）']].map(([v,l])=>`<option value="${v}" ${v===(b.zone||'Asia/Tokyo')?'selected':''}>${l}</option>`).join('')}</select><input id="bz-other" type="text" placeholder="例：Pacific/Honolulu" aria-label="その他のタイムゾーン" style="display:none"></div><p class="note">出生地の時計の時刻を入力してください。夏時間は地域・日付に応じて計算します。出生時刻不明の場合は時柱を出さず、節入り当日は年柱・月柱の候補を表示します。動物タイプは質問への回答だけで決まります。</p>
   <p id="birth-error" role="alert" style="color:#c43858;margin:12px 0"></p>
   <button class="btn" data-a="go">10問の質問へ進む</button></div>`;
 }
@@ -659,7 +676,10 @@ function axesHTML(D,c){
     return `<div class="axis"><span>${a.l}</span><div class="bar"><i style="left:${pos}%"></i></div><span class="r">${a.r}</span></div>
     <p class="axis-note">${a.l} ${'●'.repeat(f)}${'○'.repeat(5-f)} ${a.r}　（${a.l}${v}%／${a.r}${100-v}%）<br>${axisText(a,v)}</p>`;}).join('')}</div>`;
 }
-function shichuHTML(sh,c){return sec('四柱推命による補足',`<div class="box"><p><b>現在準備中</b></p><p>年柱・月柱・日柱・時柱の正確な暦計算は未実装です。節入り・干支の切り替わり・出生地とタイムゾーンを検証できるまで、鑑定結果は表示しません。出生時刻が不明の場合、時柱は推測しません。</p><p class="soft">上記の動物タイプ・解説・アドバイスは、恋愛心理の回答に基づくものです。</p></div>`,c);}
+function shichuHTML(sh,c){
+  const S=STEMS.find(s=>s.k===sh.stem),years=[...new Set(sh.candidates.map(p=>p.year))].join(' ／ '),months=[...new Set(sh.candidates.map(p=>p.month))].join(' ／ ');
+  return sec('四柱推命から見る、生まれ持った性質',`<div class="calendar-card"><p class="eyebrow">YOUR BIRTH CHART</p><div class="birth-pillars">${[['年柱',years],['月柱',months],['日柱',sh.day],['時柱',sh.hour||'不明']].map(([label,value])=>`<div><small>${label}</small><strong>${value}</strong></div>`).join('')}</div><div class="stem-reading"><span class="stem-sign">${sh.stem}</span><div><p class="eyebrow">日干 ${S.k} ／ ${S.el}・${S.img}</p><h3>${S.nature}</h3></div></div><p><b>恋愛で大切にしやすいもの</b><br>${S.wants}。</p><p><b>心がほどける関係</b><br>${S.safe}。</p><p class="soft">四柱推命の伝統的な日干の象意に基づく一般的な補足です。心理質問による動物タイプとは別の情報で、性格や未来を断定するものではありません。</p>${!sh.known?'<p class="soft">出生時刻は不明のため、時柱は推測していません。</p>':''}${sh.ambiguous?'<p class="boundary-note">出生時刻不明の節入り日、または夏時間で時刻が重なるため、年柱・月柱は候補を併記しています。出生時刻が分かると絞り込めます。</p>':''}<details class="calendar-details"><summary>計算の基準を見る</summary><p>年柱は立春、月柱は各節の到達時刻で切り替え、入力したタイムゾーン（${esc(sh.zone)}）で比較しています。日柱は出生地の日付の0時で切り替えます。時柱は出生地の時計の時刻から算出し、23時台の時干も当日の日干を使用します。真太陽時補正は行っていません。流派により結果が異なる場合があります。</p><p>暦計算：lunar-javascript 1.7.7／対応範囲1900〜2099年。節入りの計算精度や流派差により、境界のごく近くでは専門家による確認もご検討ください。</p></details></div>`,c);
+}
 function safeHttps(value){try{const u=new URL(value);return u.protocol==='https:'?u.href:'';}catch{return '';}}
 function esc(s){return String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));}
 function recommendation(ans){
@@ -672,9 +692,11 @@ function actionHTML(r){
   const advice={coaching:['恋愛パターンを整理する時間','気になっているパターンを、出来事・気持ち・行動に分けて振り返ってみましょう。'],confidence:['あなたの魅力を言葉にすること','得意なことや大切にしている価値観を、ひとつずつ書き出すところから始めてみませんか。'],event:['新しい出会いへの小さな一歩','安心して参加できるイベントを一つ探すなど、無理のない範囲で出会いを増やしてみましょう。'],marriage:['結婚に向けた具体的な計画','希望時期に向けて、出会い方や活動ペースを整理してみましょう。まずは無料相談で状況を聞かせてください。'],consult:['自分に合った次の一歩を見つけること','急いで結論を出さず、今の気持ちを整理することから始めてみましょう。']}[rec.main];
   const notes={coaching:'恋愛パターンのお悩みを選んだ回答からの提案です。',confidence:'自信や魅力の伝え方のお悩みを選んだ回答からの提案です。',event:'出会いを増やしたいという回答からの提案です。',marriage:'結婚希望時期と進め方のお悩みを選んだ回答からの提案です。',consult:'今回の希望時期・お悩みの回答を整理するための提案です。'};
   return sec('今のあなたに必要なのは',`<div class="action"><h3>${advice[0]}</h3><p>${advice[1]}</p></div><p class="soft">${notes[rec.main]}性格や悩みを断定するものではありません。</p>`)+
-  sec('おすすめのunicサービス',`<p>まずは無料Zoom相談で、お悩みや希望を整理できます。サービスの利用は必要だと感じた場合だけで大丈夫です。</p>${rec.main==='event'?'<div class="svc"><b>婚活イベント</b><p>新しい人と出会い、会話を楽しむ機会としてご紹介します。</p></div>':''}${rec.main==='confidence'?'<div class="svc"><b>美容・自分磨き</b><p>あなたらしい魅力の伝え方や、気持ちよく過ごせる身だしなみを考える選択肢です。</p></div>':''}${rec.marriage?'<div class="svc"><b>結婚相談所という選択肢</b><p>1〜2年以内の結婚を希望するという回答に合わせ、連携する結婚相談所での活動もご相談いただけます。まずは無料相談から。入会は任意です。</p></div>':''}<div class="svc"><b>恋愛コーチング（提供予定）</b><p>60分 × 3回／27,000円（税込）<br>担当：御園拓也${CONFIG.COACH_CREDENTIAL?'<br>資格：'+esc(CONFIG.COACH_CREDENTIAL):''}</p><ol><li>恋愛傾向の理解と課題の整理</li><li>コミュニケーションや行動の改善</li><li>実践の振り返りと今後の行動計画</li></ol><p>無料Zoom相談を受けたあと、ご希望と必要性に応じてご検討いただけます。</p></div>`);
+  sec('あなたの一歩に、unicを。',`<div class="service-intro"><p class="eyebrow">A LITTLE SUPPORT, YOUR WAY</p><h3>ひとりで答えを<br>出さなくて、大丈夫。</h3><p>まずは、今の気持ちを話すところから。<br>あなたのペースに合うサポートを一緒に探します。</p></div><div class="service-grid">${serviceCard('01','TALK & REFLECT','恋愛コーチング','自分の恋愛を、もっと心地よく。','恋愛のパターンや気持ちを整理し、あなたらしく関係を育てるための時間です。',`<div class="service-price">27,000<span>円（税込）</span></div><p class="service-spec">60分 × 3回 ／ 提供予定</p><details><summary>セッションの内容・担当</summary><ol><li>恋愛傾向の理解と課題の整理</li><li>コミュニケーションや行動の改善</li><li>実践の振り返りと今後の行動計画</li></ol><p>担当：御園拓也${CONFIG.COACH_CREDENTIAL?'<br>資格：'+esc(CONFIG.COACH_CREDENTIAL):''}</p></details>`)}${rec.main==='event'?serviceCard('02','MEET SOMEONE','婚活イベント','出会いに、少しのきっかけを。','新しい人と会い、会話を楽しむ時間。無理のない一歩から始めてみませんか。',''):''}${rec.main==='confidence'?serviceCard('02','FEEL LIKE YOU','美容・自分磨き','自分らしい魅力を、少しずつ。','身だしなみや伝え方を整え、あなた自身が気持ちよく過ごせるスタイルを見つけます。',''):''}${rec.marriage?serviceCard(rec.main==='event'||rec.main==='confidence'?'03':'02','THINK ABOUT TOMORROW','結婚相談所という選択肢','ふたりの未来を、具体的に。','1〜2年以内の結婚を希望する方へ。連携する結婚相談所での活動も、無料相談でご相談いただけます。入会は任意です。',''):''}</div><p class="soft">無料相談を受けたあと、ご希望と必要性に応じてご検討いただけます。購入・入会を前提とした診断ではありません。</p>`);
+
 }
-function consultationHTML(){const url=safeHttps(CONFIG.BOOKING_URL);return sec('あなたが幸せな恋愛・結婚を叶えるために',`<p>恋愛タイプ診断の結果をもとに、<br>今のあなたに必要なステップを<br>一緒に見つけませんか？</p><p>恋愛や婚活のお悩みを整理し、<br>あなたに合った次の一歩をご提案します。</p><p class="soft">無料Zoom恋愛・婚活相談／30分</p>${url?`<a class="btn" href="${esc(url)}" target="_blank" rel="noopener">無料Zoom恋愛・婚活相談を予約する</a>`:'<button class="btn" disabled>無料Zoom恋愛・婚活相談を予約する</button><p class="soft">予約受付は準備中です。</p>'}`);}
+function serviceCard(no,category,name,title,text,extra){return `<article class="service-card"><div class="service-card-top"><span>${no}</span><p class="eyebrow">${category}</p></div><p class="service-name">${name}</p><h3>${title}</h3><p class="service-description">${text}</p>${extra}</article>`;}
+function consultationHTML(){const url=safeHttps(CONFIG.BOOKING_URL);return sec('あなたが幸せな恋愛・結婚を叶えるために',`<div class="consult-card"><p class="eyebrow">FIRST STEP — 30 MINUTES</p><h3>まずは、話してみませんか。</h3><p>恋愛タイプ診断の結果をもとに、<br>今のあなたに必要なステップを<br>一緒に見つけませんか？</p><p>恋愛や婚活のお悩みを整理し、<br>あなたに合った次の一歩をご提案します。</p><p class="soft">無料Zoom恋愛・婚活相談／30分</p>${url?`<a class="btn" href="${esc(url)}" target="_blank" rel="noopener">無料Zoom恋愛・婚活相談を予約する</a>`:'<button class="btn" disabled>無料Zoom恋愛・婚活相談を予約する</button><p class="soft">予約受付は準備中です。</p>'}</div>`);}
 function officialLineHTML(){const url=safeHttps(CONFIG.LINE_OA_URL);return sec('unicの公式LINE',`<p>恋愛・婚活に役立つ情報を<br>公式LINEで無料配信中！</p>${url?`<a class="btn line" href="${esc(url)}" target="_blank" rel="noopener">unicの公式LINEに登録する</a>`:'<button class="btn line" disabled>unicの公式LINEに登録する</button><p class="soft">登録リンクは準備中です。</p>'}<p class="soft">診断結果の共有とは別の機能です。登録は任意。すでに登録済みの方は再登録不要です。診断結果は登録せずにすべて閲覧できます。</p>`);}
 function compatPanel(u,j){
   const c=compat(u,j),t=T[j],C=CONF[c.low];
@@ -703,11 +725,10 @@ function resultHTML(){
   h+=sec('恋愛・結婚で注意したいこと',`<div class="box"><h3>苦戦しやすい相手</h3><p>${t.hard}</p><h3 style="margin-top:10px">結婚生活で大切にすること</h3><p>${t.marry}</p><h3 style="margin-top:10px">婚活で気をつけるポイント</h3><p>${t.kon}</p></div><div class="box"><h3>おすすめの最初の一歩</h3><p>${t.act}</p></div>`,c);
   h+=sec('会話が合う人・違いを補い合える人',`<p class="soft">以下は動物タイプの一般的な特徴を比較した参考情報です。今回質問していないコミュニケーションの軸を個別に測定したものではありません。</p>`+matchList(M.talk,'話が合いやすいタイプ')+matchList(M.val,'価値観が近いタイプ')+matchList(M.comp,'自分と違うけれど、補い合いやすいタイプ')+`<p class="soft">相性は点数で決まるものではありません。「違い」は、知っていれば魅力にもなります。</p>`,c);
   h+=sec('気になるタイプとの相性をチェック',`<div class="ptable" id="pt">${T.map((x,j)=>`<button data-a="pick" data-j="${j}">${im(x.id)}<span>${AN[j]}</span></button>`).join('')}</div><div id="cmp"><p class="soft">タイプを選ぶと、会話・愛情表現・距離感・スピード・価値観を比べられます。</p></div>`,c);
-  h+=sec('イベントで使えるトークカード',`<div class="namecard" style="--c:${c}"><div class="big">私は${t.e} ${t.nm}</div><small>${t.tags.map(x=>'#'+x).join(' ')}</small><small>話しかけやすいのは：${M.talk.map(m=>T[m.j].e+T[m.j].nm).join('、')}</small></div><p class="soft">名札やプロフィールに書いたり、会場で「私、${t.nm}でした！あなたは？」と話しかけるきっかけに使えます。</p>`,c);
   h+=shichuHTML(sh,c);
   h+=actionHTML(r);
   h+=consultationHTML();
-  h+=sec('LINE・Instagramで共有',`<a class="btn line" target="_blank" rel="noopener" href="${lineHref(resText(t))}">結果をLINEで送る</a><a class="btn ghost small" target="_blank" rel="noopener" href="${lineHref(toolText())}">診断そのものを友だちに送る</a><button class="btn ghost small" data-a="copyres">結果の文章をコピー</button><button class="btn ghost small" data-a="copyurl">結果URLをコピー</button><button class="btn" data-a="instagram">Instagramでシェア</button><p class="soft">ストーリーズ用画像を作成します。Instagramへ自動投稿はしません。</p><div id="story-output" aria-live="polite"></div>`);
+  h+=sec('LINE・Instagramで共有',`<a class="btn line" target="_blank" rel="noopener" href="${lineHref(resText(t))}">結果をLINEで送る</a><a class="btn ghost small" target="_blank" rel="noopener" href="${lineHref(toolText())}">診断そのものを友だちに送る</a><button class="btn" data-a="instagram">Instagramでシェア</button><p class="soft">ストーリーズ用画像を作成します。Instagramへ自動投稿はしません。</p><div id="story-output" aria-live="polite"></div>`);
   h+=officialLineHTML();
   h+=serviceLink();
   h+=`<button class="btn ghost small" style="margin-top:24px" data-a="retry">もう一度診断する</button><p class="foot">unic LOVE TYPE 12 ／ 恋をもっと、あなたらしく。<br>※本診断は心理検査・医学的診断ではなく、自己理解のためのエンターテインメントです。</p>`;
@@ -751,14 +772,13 @@ function onClick(e){
     const d=document.getElementById('bd').value, tm=document.getElementById('bt').value, nt=document.getElementById('bn').checked;
     const error=validateBirth(d);document.getElementById('birth-error').textContent=error;document.getElementById('bd').setAttribute('aria-invalid',String(!!error));if(error){document.getElementById('bd').focus();return;}
     if(!nt&&tm&&!/^([01]\d|2[0-3]):[0-5]\d$/.test(tm)){document.getElementById('birth-error').textContent='出生時刻をご確認ください。';return;}
-    st.birth={date:d,time:nt?'':tm,noTime:nt||!tm};st.screen='quiz';render();
+    const zone=document.getElementById('bz').value==='other'?document.getElementById('bz-other').value.trim():document.getElementById('bz').value;
+    const birth={date:d,time:nt?'':tm,noTime:nt||!tm,zone};try{calcShichu(birth);}catch(err){document.getElementById('birth-error').textContent=err instanceof RangeError?'出生地のタイムゾーンをご確認ください。':err.message;return;}st.birth=birth;st.screen='quiz';render();
   }
   else if(a==='addbirth'){st.screen='birth';render();}
   else if(a==='retry'){history.replaceState(null,'',baseUrl());st.screen='intro';st.pos=0;st.ans=[];st.birth=null;st.res=null;render();}
   else if(a==='copytool') copy(toolText());
-  else if(a==='copyurl') copy(resultUrl());
   else if(a==='instagram') makeStory().catch(()=>toast('画像を作成できませんでした。もう一度お試しください。'));
-  else if(a==='copyres') copy(resText(T[st.res.type.n]));
   else if(a==='pick'){
     const j=+b.dataset.j;
     document.querySelectorAll('#pt button').forEach(x=>x.classList.toggle('on',x===b));
@@ -784,7 +804,7 @@ function sharedHTML(){
 
 if(typeof document!=='undefined'&&document.getElementById('app')){
   st.shared=parseShared(location.search);if(st.shared)st.screen='shared';
-  document.addEventListener('change',e=>{if(e.target.id==='bn'){const t=document.getElementById('bt');t.disabled=e.target.checked;if(t.disabled)t.value='';}});
+  document.addEventListener('change',e=>{if(e.target.id==='bz'){document.getElementById('bz-other').style.display=e.target.value==='other'?'block':'none';}if(e.target.id==='bn'){const t=document.getElementById('bt');t.disabled=e.target.checked;if(t.disabled)t.value='';}});
   document.addEventListener('click',onClick);
   render();
 }

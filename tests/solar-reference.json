@@ -1,0 +1,341 @@
+{
+  "source": "astronomy-engine 2.1.19 SearchSunLongitude, apparent geocentric Sun longitude",
+  "fixtures": [
+    {
+      "year": 1900,
+      "name": "小寒",
+      "longitude": 285,
+      "referenceUTC": "1900-01-05T18:04:09.130Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1900,
+      "name": "立春",
+      "longitude": 315,
+      "referenceUTC": "1900-02-04T05:51:46.591Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1900,
+      "name": "惊蛰",
+      "longitude": 345,
+      "referenceUTC": "1900-03-06T00:21:55.721Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1900,
+      "name": "清明",
+      "longitude": 15,
+      "referenceUTC": "1900-04-05T05:52:31.042Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1900,
+      "name": "立夏",
+      "longitude": 45,
+      "referenceUTC": "1900-05-05T23:54:59.926Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1900,
+      "name": "芒种",
+      "longitude": 75,
+      "referenceUTC": "1900-06-06T04:38:57.509Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1900,
+      "name": "小暑",
+      "longitude": 105,
+      "referenceUTC": "1900-07-07T15:10:20.800Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1900,
+      "name": "立秋",
+      "longitude": 135,
+      "referenceUTC": "1900-08-08T00:50:48.024Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1900,
+      "name": "白露",
+      "longitude": 165,
+      "referenceUTC": "1900-09-08T03:16:55.774Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1900,
+      "name": "寒露",
+      "longitude": 195,
+      "referenceUTC": "1900-10-08T18:13:20.988Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1900,
+      "name": "立冬",
+      "longitude": 225,
+      "referenceUTC": "1900-11-07T20:39:46.805Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1900,
+      "name": "大雪",
+      "longitude": 255,
+      "referenceUTC": "1900-12-07T12:55:49.785Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1950,
+      "name": "小寒",
+      "longitude": 285,
+      "referenceUTC": "1950-01-05T21:39:07.014Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1950,
+      "name": "立春",
+      "longitude": 315,
+      "referenceUTC": "1950-02-04T09:20:58.365Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1950,
+      "name": "惊蛰",
+      "longitude": 345,
+      "referenceUTC": "1950-03-06T03:35:23.083Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1950,
+      "name": "清明",
+      "longitude": 15,
+      "referenceUTC": "1950-04-05T08:44:28.103Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1950,
+      "name": "立夏",
+      "longitude": 45,
+      "referenceUTC": "1950-05-06T02:24:53.536Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1950,
+      "name": "芒种",
+      "longitude": 75,
+      "referenceUTC": "1950-06-06T06:51:08.579Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1950,
+      "name": "小暑",
+      "longitude": 105,
+      "referenceUTC": "1950-07-07T17:13:14.425Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1950,
+      "name": "立秋",
+      "longitude": 135,
+      "referenceUTC": "1950-08-08T02:55:09.789Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1950,
+      "name": "白露",
+      "longitude": 165,
+      "referenceUTC": "1950-09-08T05:33:52.382Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1950,
+      "name": "寒露",
+      "longitude": 195,
+      "referenceUTC": "1950-10-08T20:51:58.796Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1950,
+      "name": "立冬",
+      "longitude": 225,
+      "referenceUTC": "1950-11-07T23:43:46.332Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 1950,
+      "name": "大雪",
+      "longitude": 255,
+      "referenceUTC": "1950-12-07T16:21:24.347Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2000,
+      "name": "小寒",
+      "longitude": 285,
+      "referenceUTC": "2000-01-06T01:00:55.938Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2000,
+      "name": "立春",
+      "longitude": 315,
+      "referenceUTC": "2000-02-04T12:40:18.090Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2000,
+      "name": "惊蛰",
+      "longitude": 345,
+      "referenceUTC": "2000-03-05T06:42:26.331Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2000,
+      "name": "清明",
+      "longitude": 15,
+      "referenceUTC": "2000-04-04T11:31:47.158Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2000,
+      "name": "立夏",
+      "longitude": 45,
+      "referenceUTC": "2000-05-05T04:49:58.986Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2000,
+      "name": "芒种",
+      "longitude": 75,
+      "referenceUTC": "2000-06-05T08:58:25.647Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2000,
+      "name": "小暑",
+      "longitude": 105,
+      "referenceUTC": "2000-07-06T19:13:56.127Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2000,
+      "name": "立秋",
+      "longitude": 135,
+      "referenceUTC": "2000-08-07T05:03:12.928Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2000,
+      "name": "白露",
+      "longitude": 165,
+      "referenceUTC": "2000-09-07T07:59:29.080Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2000,
+      "name": "寒露",
+      "longitude": 195,
+      "referenceUTC": "2000-10-07T23:38:26.715Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2000,
+      "name": "立冬",
+      "longitude": 225,
+      "referenceUTC": "2000-11-07T02:48:15.845Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2000,
+      "name": "大雪",
+      "longitude": 255,
+      "referenceUTC": "2000-12-06T19:37:21.901Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2024,
+      "name": "小寒",
+      "longitude": 285,
+      "referenceUTC": "2024-01-05T20:49:19.758Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2024,
+      "name": "立春",
+      "longitude": 315,
+      "referenceUTC": "2024-02-04T08:26:49.630Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2024,
+      "name": "惊蛰",
+      "longitude": 345,
+      "referenceUTC": "2024-03-05T02:22:28.877Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2024,
+      "name": "清明",
+      "longitude": 15,
+      "referenceUTC": "2024-04-04T07:02:14.725Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2024,
+      "name": "立夏",
+      "longitude": 45,
+      "referenceUTC": "2024-05-05T00:10:08.464Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2024,
+      "name": "芒种",
+      "longitude": 75,
+      "referenceUTC": "2024-06-05T04:09:54.092Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2024,
+      "name": "小暑",
+      "longitude": 105,
+      "referenceUTC": "2024-07-06T14:20:07.101Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2024,
+      "name": "立秋",
+      "longitude": 135,
+      "referenceUTC": "2024-08-07T00:09:30.136Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2024,
+      "name": "白露",
+      "longitude": 165,
+      "referenceUTC": "2024-09-07T03:11:41.910Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2024,
+      "name": "寒露",
+      "longitude": 195,
+      "referenceUTC": "2024-10-07T19:00:06.976Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2024,
+      "name": "立冬",
+      "longitude": 225,
+      "referenceUTC": "2024-11-06T22:19:55.550Z",
+      "toleranceSeconds": 120
+    },
+    {
+      "year": 2024,
+      "name": "大雪",
+      "longitude": 255,
+      "referenceUTC": "2024-12-06T15:16:48.690Z",
+      "toleranceSeconds": 120
+    }
+  ]
+}
