@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=bcebbb29-1c5e-48c2-b967-ad1c6b567d90
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>unic LOVE TYPE 12｜恋愛タイプ診断</title>
+<meta name="description" content="恋をもっと、あなたらしく。自分を知って、相手を知って、次の一歩まで分かる恋愛診断。">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>:root{--bg:#FFF8F1;--card:#FFFFFF;--ink:#2B2430;--sub:#6F6577;--line:#EFE3D8;--pink:#FF5C86;--line-green:#06C755;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1B1720;--card:#26212D;--ink:#F6F0F7;--sub:#B9AFC2;--line:#3B3345}}
+:root[data-theme="dark"]{--bg:#1B1720;--card:#26212D;--ink:#F6F0F7;--sub:#B9AFC2;--line:#3B3345}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;line-height:1.75;-webkit-text-size-adjust:100%}
+#app{max-width:520px;margin:0 auto;padding:18px 16px 56px}
+h1,h2,h3,p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.logo{display:block;width:210px;margin:6px auto 0;border-radius:14px}
+.hero{text-align:center;padding-top:6px}
+.hero .catch{font-size:26px;font-weight:900;letter-spacing:.04em;margin:14px 0 6px;line-height:1.35}
+.hero .lead{color:var(--sub);font-size:14px}
+.thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:20px 0 6px}
+.thumbs div{aspect-ratio:1/1.15;border-radius:14px;overflow:hidden;background:var(--c)}
+.thumbs img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.meta{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:14px 0 22px}
+.meta span{font-size:12px;border:1.5px solid var(--line);border-radius:99px;padding:3px 11px;background:var(--card)}
+.btn{display:block;width:100%;border:0;border-radius:16px;padding:15px 18px;font-weight:800;font-size:16px;text-align:center;text-decoration:none;background:var(--pink);color:#fff;box-shadow:0 5px 0 rgba(0,0,0,.14);transition:transform .08s}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.14)}
+.btn.line{background:var(--line-green)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line);box-shadow:none}
+.btn.small{padding:10px 14px;font-size:14px}
+.btn+.btn{margin-top:12px}
+.note{font-size:12px;color:var(--sub);margin-top:16px}
+.prog{height:10px;border-radius:9px;background:var(--line);overflow:hidden;margin:6px 0 8px}
+.prog i{display:block;height:100%;background:var(--pink);border-radius:9px;transition:width .25s}
+.qn{font-size:13px;color:var(--sub);display:flex;justify-content:space-between}
+.qtext{font-size:21px;font-weight:800;line-height:1.6;margin:30px 2px 26px;min-height:8.5em}
+.ans{display:grid;gap:10px}
+.ans button{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px 16px;text-align:left;font-weight:700;font-size:15px;display:flex;align-items:center;gap:12px;transition:border-color .1s,background .1s}
+.ans button b{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--line);font-size:13px}
+.ans button.on{border-color:var(--pink);background:color-mix(in srgb,var(--pink) 12%,var(--card))}
+.ans button.on b{background:var(--pink);color:#fff}
+.back{background:none;border:0;color:var(--sub);font-size:14px;margin-top:18px;padding:8px 0}
+.form{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:20px;margin-top:18px}
+.form label{display:block;font-weight:800;font-size:14px;margin:0 0 6px}
+.form input[type=date],.form input[type=time]{width:100%;font:inherit;font-size:17px;padding:12px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+.form .row{margin-bottom:16px}
+.chk{display:flex;gap:8px;align-items:center;font-size:14px;margin-top:8px}
+.center{text-align:center}
+.spin{font-size:56px;margin:80px 0 12px;animation:bob 1s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}.prog i{transition:none}}
+
+/* result */
+.res-hero{border-radius:28px;background:color-mix(in srgb,var(--c) 26%,var(--card));padding:22px 18px 20px;text-align:center;border:2px solid color-mix(in srgb,var(--c) 55%,var(--card))}
+.res-hero .no{font-size:13px;font-weight:800;color:var(--sub)}
+.res-hero .pic{width:240px;max-width:100%;height:auto;aspect-ratio:1/1;margin:8px auto 4px;border-radius:26px;overflow:hidden;background:var(--c)}
+.res-hero .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;display:block}
+.res-hero .you{font-size:15px;font-weight:700;margin-top:8px}
+.res-hero h1{font-size:30px;font-weight:900;line-height:1.35;margin:2px 0 4px}
+.kind{display:inline-block;background:var(--c);color:#2B2430;font-weight:800;font-size:13px;border-radius:99px;padding:3px 14px}
+.res-hero .cc{font-size:17px;font-weight:800;margin:14px 0 10px}
+.tags{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.tags span{font-size:12px;font-weight:700;background:var(--card);border-radius:99px;padding:2px 10px}
+.sub-type{font-size:12px;color:var(--sub);margin-top:12px}
+.sec{margin-top:30px}
+.sec h2{font-size:19px;font-weight:900;margin-bottom:10px;padding-left:12px;border-left:6px solid var(--c,var(--pink));line-height:1.4}
+.sec p{font-size:15px}
+.sec p+p{margin-top:8px}
+.box{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:16px 16px}
+.box+.box{margin-top:12px}
+.box h3{font-size:14px;font-weight:800;margin-bottom:4px;color:var(--sub)}
+.list{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.list li{position:relative;padding-left:22px;font-size:15px}
+.list li::before{content:"";position:absolute;left:3px;top:.62em;width:10px;height:10px;border-radius:50%;background:var(--c,var(--pink))}
+.axis{display:grid;grid-template-columns:3.2em 1fr 3.2em;align-items:center;gap:8px;font-size:13px;font-weight:800;margin:14px 0 2px}
+.axis .r{text-align:right}
+.bar{position:relative;height:12px;border-radius:9px;background:var(--line)}
+.bar i{position:absolute;top:-4px;width:20px;height:20px;border-radius:50%;background:var(--c);border:3px solid var(--card);box-shadow:0 0 0 2px var(--c);transform:translateX(-50%)}
+.axis-note{font-size:13px;color:var(--sub)}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.pillars div{background:var(--bg);border-radius:14px;padding:8px 2px;border:2px solid var(--line)}
+.pillars small{display:block;font-size:11px;color:var(--sub)}
+.pillars b{font-size:24px;letter-spacing:.06em;font-weight:900}
+.pillars .day{border-color:var(--c);background:color-mix(in srgb,var(--c) 18%,var(--card))}
+.el{display:grid;grid-template-columns:2em 1fr 3em;gap:8px;align-items:center;font-size:13px;font-weight:800;margin:6px 0}
+.el .b{height:12px;border-radius:9px;background:var(--line);overflow:hidden}
+.el .b i{display:block;height:100%;border-radius:9px}
+.gap{border-left:5px solid #FFB020;border-radius:6px 16px 16px 6px;background:color-mix(in srgb,#FFB020 12%,var(--card));padding:12px 14px;font-size:15px}
+.gap+.gap{margin-top:10px}
+.gap b{display:block;margin-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:2px solid var(--line);background:var(--card);border-radius:14px;padding:6px 10px;font-size:13px;font-weight:800;display:inline-flex;align-items:center;gap:6px}
+.chip img{width:26px;height:26px;border-radius:50%;object-fit:cover;object-position:50% 20%}
+.mini{display:flex;gap:10px;align-items:center;margin:8px 0}
+.mini img{width:46px;height:46px;border-radius:14px;object-fit:cover;object-position:50% 20%;flex:none}
+.mini div{font-size:14px;line-height:1.5}
+.mini small{display:block;color:var(--sub);font-size:12px}
+.action{border-radius:24px;padding:20px 18px;background:color-mix(in srgb,var(--ac) 20%,var(--card));border:2px solid color-mix(in srgb,var(--ac) 60%,var(--card))}
+.action .en{font-size:26px;font-weight:900;letter-spacing:.03em;line-height:1.2}
+.action .ja{font-size:16px;font-weight:800;margin-top:4px}
+.badge{display:inline-block;font-size:12px;font-weight:800;background:var(--ac);color:#2B2430;border-radius:99px;padding:2px 12px;margin-bottom:8px}
+.steps{counter-reset:s;margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:10px;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:12px;font-size:15px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--pink);color:#fff;font-weight:900}
+.svc{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:14px 16px;margin-top:10px}
+.svc b{font-size:16px}
+.svc p{font-size:14px;color:var(--sub)}
+.soft{font-size:13px;color:var(--sub);margin-top:10px}
+.stars{letter-spacing:.08em;color:#FFB020;font-size:15px}
+.cmp{display:grid;grid-template-columns:5.5em 1fr;gap:4px 10px;font-size:14px;margin:10px 0}
+.cmp span:nth-child(odd){font-weight:800}
+.ptable{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}
+.ptable button{border:2px solid var(--line);background:var(--card);border-radius:14px;padding:4px 0 6px;font-size:11px;font-weight:800;display:grid;justify-items:center;gap:2px}
+.ptable button.on{border-color:var(--pink)}
+.ptable img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:50% 20%}
+.namecard{border-radius:24px;padding:18px;text-align:center;background:var(--c);color:#2B2430;border:3px dashed rgba(43,36,48,.35)}
+.namecard .big{font-size:22px;font-weight:900;line-height:1.4}
+.namecard small{display:block;font-weight:700;margin-top:4px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#2B2430;color:#fff;padding:10px 18px;border-radius:99px;font-size:14px;font-weight:700;z-index:9}
+.foot{margin-top:34px;font-size:12px;color:var(--sub);text-align:center}
+/* Individually redrawn high-resolution characters; never crop the ears/face. */
+.thumbs img,.pic img,.mini img,.ptable img{object-fit:contain;object-position:center;aspect-ratio:1/1}
+.thumbs div{aspect-ratio:1/1}
+.form input{max-width:100%;min-width:0}
+.form input:disabled{opacity:.5}
+.animal{position:relative;display:block;padding-bottom:16px;width:100%;height:100%;overflow:hidden}
+.animal .brand{position:absolute;left:0;right:0;bottom:0;background:#fffdf4ed;color:#2b2430;text-align:center;font-family:Arial,sans-serif;font-size:9px;line-height:1.5;white-space:nowrap;letter-spacing:.02em}
+.res-hero .pic .animal img,.thumbs .animal img,.mini .animal img,.ptable .animal img{width:100%;height:100%;object-fit:contain;object-position:center;border-radius:0}
+.res-hero .pic .brand{font-size:14px}
+.res-hero .pic .animal{padding-bottom:24px}
+.mini .animal{width:56px;height:56px;flex:none}
+.ptable .animal{width:58px;height:58px;max-width:100%}
+.thumbs>div{aspect-ratio:1/1}
+button:disabled{opacity:.55;cursor:default;box-shadow:none}
+#story-output img{display:block;width:100%;max-width:270px;height:auto;margin:16px auto;border-radius:16px}
+.ans button,.btn{min-height:48px}
+</style></head>
+<body><div id="app"></div>
+<script src="site-config.js"></script>
+<script>
+/* ===== 設定 ===== */
+const CONFIG={
+  SHARE_URL:'',            // 公開後のURLを入れるとLINE共有にそのURLが入ります（空なら現在のURL）
+  LINE_OA_URL:'',          // LINE公式アカウントの友だち追加URL（例: https://lin.ee/xxxx）。空ならボタン非表示
+  LINE_OA_LABEL:'unicの公式LINEに登録する',
+  BOOKING_URL:'',
+  COACH_CREDENTIAL:'',
+  ...(typeof window!=='undefined'?window.UNIC_CONFIG||{}:{})
+};
+
+/* ===== 12タイプ =====
+ p = 特徴プロトタイプ [act,cau,exp,sec,ind,spd,ide,rea,one,sti, EI(外向),NS(直感),FT(共感),PJ(計画)] 0-100 */
+const T=[
+{id:'01',e:'🐰',nm:'愛され上手なうさぎ',kind:'愛されハピネスタイプ',c:'#F58FA8',tags:['愛され力','ポジティブ','ムードメーカー'],
+ p:[65,35,85,65,35,60,55,40,55,55,80,60,80,40],
+ catch:'そこにいるだけで、場がやわらぐ人。',
+ desc:'天性の親しみやすさで、自然と周りを笑顔にするタイプ。好意をオープンに出せるので、初対面でも「話しやすい」と思われがち。愛されることで、さらに魅力が輝きます。',
+ str:['好意や感謝を素直に言葉にできる','相手の緊張を自然にほどける','一緒にいると楽しい、という空気をつくれる'],
+ habit:['嫌われたくなくて、本音を後回しにしやすい','誰にでも優しいので、本命かどうか誤解されやすい','相手の反応ひとつで気分が上下しやすい'],
+ attract:'リードしてくれて、自分を全力で可愛がってくれる人。頼りがいのある包容力タイプに惹かれがち。',
+ long:'あなたの明るさを受け止めつつ、「本当はどう思ってる？」と本音を聞き出してくれる落ち着いた人。',
+ hard:'感情表現が少なく、反応が薄い人。悪気はなくても「嫌われたかも」と不安になりやすい組み合わせです。',
+ after:'愛情表現がまめで、記念日や小さなサプライズも大切にします。不安になると「好き？」を確認したくなる面も。',
+ marry:'笑顔の絶えない家庭をつくれる一方、不満を溜め込むと突然爆発しがち。「言いにくいことほど早めに」が合言葉です。',
+ kon:'愛想の良さが「誰にでも優しい人」に見えると、本気度が伝わりにくいことも。「あなただから」を言葉にしましょう。',
+ unnoticed:'相手を喜ばせることに全力で、自分の希望を「なんでもいいよ」で流してしまう癖があります。',
+ seen:'親しみやすい人気者。ただ「本当はどう思っているか分かりにくい」と感じる人もいます。',
+ act:'デートのあと、素直な感想を具体的に1つ伝える。「楽しかった」に「〇〇が特に」を足すだけでOK。'},
+{id:'02',e:'🦁',nm:'恋に一直線なライオン',kind:'情熱リードタイプ',c:'#F2A03D',tags:['情熱','行動力','リード'],
+ p:[90,25,75,45,60,90,60,45,65,70,85,55,45,60],
+ catch:'好きになったら、迷わず一直線。',
+ desc:'行動力とエネルギーで恋を前に進める人。好きな相手には熱量高く向き合い、決断もスピーディー。恋のリーダーとして関係を引っ張ります。',
+ str:['決断とスピードで関係を前に進められる','好意がまっすぐ伝わる','デートも計画もリードできる'],
+ habit:['ペースが速く、相手が追いつけないことがある','熱が入るほど主導権を握りすぎる','思い通りに進まないと焦りやすい'],
+ attract:'自分のペースを楽しんでくれる、明るくて素直な人。少し尊敬できる相手にも惹かれます。',
+ long:'あなたの勢いに乗りつつ、ブレーキ役として意見を言える対等な人。',
+ hard:'決断が遅く、意思表示をはっきりしない人。あなたの熱量が空回りしやすくなります。',
+ after:'愛情表現もサプライズも全力。ただ、相手の温度差や疲れに気づきにくいところがあります。',
+ marry:'家庭でも「決めるのは自分」になりがち。大事な決断ほど、二人で話して決める習慣を。',
+ kon:'スピード感は武器ですが、相手がついてきているか確認を。結婚観のすり合わせは早めに行うと安心です。',
+ unnoticed:'実は「断られること」への不安を、行動量で打ち消している面があります。',
+ seen:'頼れるリーダー。ただ、状況によっては「圧が強い」と感じさせることも。',
+ act:'次のデートを提案する前に「私のペース、速すぎたら教えてね」と一言添える。'},
+{id:'03',e:'🦢',nm:'夢見るロマンチストな白鳥',kind:'直感ロマンスタイプ',c:'#A99BE6',tags:['ロマン','直感','理想主義'],
+ p:[45,45,65,60,45,50,90,25,65,50,40,90,75,35],
+ catch:'ときめきを信じて、美しい恋を描く人。',
+ desc:'ときめきや理想を大切にし、心が動く瞬間を信じるロマンチスト。恋にストーリーや世界観を求める、感性豊かなタイプです。',
+ str:['感性が豊かで、恋を丁寧に味わえる','相手の可能性を見つけるのが上手','雰囲気づくりや言葉選びが美しい'],
+ habit:['理想と現実のギャップで急に冷めやすい','相手を「理想の姿」で見てしまう','ときめきが薄れると不安になる'],
+ attract:'感性が合い、特別扱いしてくれるミステリアスな人。',
+ long:'ロマンを共有しながら、生活面では現実を支えてくれる安定感のある人。',
+ hard:'ムードや言葉を大事にしない、現実一辺倒な人。「分かってもらえない」と感じやすくなります。',
+ after:'記念日や二人の世界観を大切にします。日常が続くと「ときめき不足」を感じやすいかも。',
+ marry:'結婚は「ときめきが続くこと」より「日常を一緒に育てること」。生活の小さな喜びを共有する習慣が鍵です。',
+ kon:'会う前の想像が膨らみやすいタイプ。数回会ってから判断する余白を持つと、出会いの質が上がります。',
+ unnoticed:'理想を追うのは、実は「心から安心できる人に出会いたい」という願いの裏返しです。',
+ seen:'上品で雰囲気のある人。ただ「理想が高そう」と思われることも。',
+ act:'「理想の相手像」を、条件ではなく“空気感”3つで書き出す（例：静かに笑い合える）。'},
+{id:'04',e:'🐧',nm:'慎重派のペンギン',kind:'慎重安定タイプ',c:'#6EC3E6',tags:['誠実','安定','慎重'],
+ p:[30,90,40,80,40,20,45,75,70,20,25,30,55,80],
+ catch:'信頼を積み重ねて、じっくり育てる恋。',
+ desc:'誠実で、時間をかけて信頼を築くタイプ。簡単には心を預けない分、決めたら堅実。安心できる関係を何より大切にします。',
+ str:['約束を守る誠実さがある','感情に流されず、安定した関係を築ける','一度決めたら長く続く'],
+ habit:['慎重すぎてチャンスを逃しやすい','好意があっても相手に伝わりにくい','様子見が長引いて相手が離れてしまうことも'],
+ attract:'穏やかで誠実、急かさずに待ってくれる人。',
+ long:'あなたのペースを尊重しつつ、少しだけ背中を押してくれる人。',
+ hard:'押しが強く、スピード重視で迫る人。あなたが心を閉じてしまいやすくなります。',
+ after:'付き合ってからも堅実。ゆっくり深まる愛情で、相手に大きな安心感を与えます。',
+ marry:'安定した家庭を築ける反面、新しい挑戦に消極的に。年に1度は「二人の初めてのこと」を入れてみて。',
+ kon:'見極めに時間をかけるのは強み。ただ、会う数が少ないと比較材料も増えません。',
+ unnoticed:'「慎重」は臆病ではなく、傷つきたくない優しさ。ただ好意が「無関心」に見えることも。',
+ seen:'真面目で信頼できる人。ただ「本心が読めない」と思われることもあります。',
+ act:'気になる相手には、好意を小さく出すルールを作る（挨拶＋一言だけ）。'},
+{id:'05',e:'🐨',nm:'寄り添い上手なコアラ',kind:'共感サポートタイプ',c:'#7CC68A',tags:['共感','やさしさ','支える'],
+ p:[35,60,75,85,25,35,45,50,75,25,35,50,90,50],
+ catch:'あなたがそばにいると、ほっとする。',
+ desc:'相手の気持ちに寄り添い、安心できる関係をつくる愛のサポーター。聞き上手で、一緒にいるとほっとできる存在です。',
+ str:['相手の感情の変化に気づける','聞き上手で安心感を与える','長く支え合う関係を築ける'],
+ habit:['相手優先で自分の希望を後回しにする','頼られすぎて疲れてしまう','「察してほしい」が心に積もりやすい'],
+ attract:'感謝を言葉にしてくれる、優しくて頼りになる人。',
+ long:'あなたの優しさに甘えるだけでなく、あなたの気持ちも聞いてくれる人。',
+ hard:'感情に無関心で、論理で押し切る人。あなたの心が消耗しやすくなります。',
+ after:'献身的で、相手の生活や体調まで気にかけます。尽くしすぎには注意。',
+ marry:'支え合いの温かい家庭に。「私も休む日」を作り、家事や気持ちの負担を見える化しましょう。',
+ kon:'相手に合わせすぎると「本当はどんな人？」が見えにくくなります。自分の好きなことも早めに話して。',
+ unnoticed:'支えることで愛を確かめる癖があり、「役に立てない自分」に不安を感じることも。',
+ seen:'癒し系で優しい人。ただ、頼みやすさから「都合の良い人」になりやすい面も。',
+ act:'デートで「私はこっちがいいな」を1回言ってみる。小さな自己主張の練習。'},
+{id:'06',e:'🐱',nm:'自由を愛するねこ',kind:'自立パートナータイプ',c:'#F2A26B',tags:['自由','マイペース','自立'],
+ p:[40,55,40,35,90,40,45,55,40,60,35,55,40,20],
+ catch:'自由も、愛情も、どっちも大切にしたい。',
+ desc:'自分らしくマイペースに恋を楽しむタイプ。束縛よりも心のつながりを大切にし、気ままな魅力があります。',
+ str:['自立していて依存しない','適度な距離感で、関係を長続きさせられる','自分の価値観をちゃんと持っている'],
+ habit:['距離を取りすぎて冷たく見える','深い話になると逃げたくなる','好意を出すタイミングを逃しやすい'],
+ attract:'束縛せず、ユーモアがあって自分の世界を持っている人。',
+ long:'自由を尊重しながら、ここぞという時に安心させてくれる人。',
+ hard:'連絡頻度や束縛が強く、常に一緒を求める人。息が詰まりやすくなります。',
+ after:'べったりせず、自分の時間も相手の時間も大切にします。',
+ marry:'「自由」と「共有」のバランスが鍵。ひとり時間のルールを最初に話し合っておくと安心です。',
+ kon:'自由を大切にするのは良いこと。ただ「会う頻度」や「連絡」の最低ラインは伝えておきましょう。',
+ unnoticed:'自由を好む裏に「縛られたくない」だけでなく「安心できる人には甘えたい」が隠れていることも。',
+ seen:'クールでマイペース。ただ「本気なのか分からない」と思われがちです。',
+ act:'「大事に思ってるよ」を週1回、言葉にする。頻度より温度を意識して。'},
+{id:'07',e:'🦉',nm:'恋を見極めるフクロウ',kind:'現実セレクトタイプ',c:'#D9946C',tags:['現実的','分析力','見極め'],
+ p:[45,80,35,55,65,30,35,90,55,25,35,20,20,75],
+ catch:'感情も、現実も、どちらも見て選ぶ。',
+ desc:'感情だけでなく、現実や将来も大切にするタイプ。冷静な視点で本当に合う相手を選ぶ、賢い恋のナビゲーターです。',
+ str:['条件と人柄のバランスを見極められる','冷静な判断で失敗しにくい','将来を見据えた選択ができる'],
+ habit:['分析しすぎて動けなくなる','無意識に減点方式で相手を見てしまう','感情を出すのが後回しになる'],
+ attract:'知的で誠実、話に深みのある人。',
+ long:'現実的な視点を共有しつつ、あなたの心を温めてくれる人。',
+ hard:'計画性がなく、その場のノリで動く人。不安が先に立ちやすくなります。',
+ after:'愛情は静かで堅実。生活面のサポートも計画的に行います。',
+ marry:'家計や暮らしの設計は得意。感情の共有を意識して「今日どう感じた？」を話す時間を。',
+ kon:'条件の整理が得意な反面、条件で先に絞りすぎると、会ってみて分かる魅力を見逃すことも。',
+ unnoticed:'分析は、「失敗したくない」という心の防御でもあります。',
+ seen:'賢くて頼れる人。少し近寄りがたい印象を持たれることも。',
+ act:'相手への条件を「絶対」「できれば」「気にしない」の3つに分けて書く。'},
+{id:'08',e:'🐬',nm:'好奇心いっぱいのイルカ',kind:'探求クリエイティブタイプ',c:'#4FA6E8',tags:['好奇心','刺激','成長'],
+ p:[75,25,65,40,65,70,55,40,40,90,80,70,55,20],
+ catch:'新しい出会いも、ワクワクも、全部恋のエネルギー。',
+ desc:'新しい出会いや刺激を楽しみながら、一緒に成長できる恋を求めるタイプ。明るく前向きなムードメーカーです。',
+ str:['出会いの場で自然に盛り上げられる','変化を楽しめる','相手に新しい世界を見せられる'],
+ habit:['関係が落ち着くと物足りなさを感じやすい','選択肢が多くて決められない','盛り上がりで判断が早すぎることがある'],
+ attract:'知的好奇心があり、一緒に何かを体験できる人。',
+ long:'刺激と安心のバランスを取ってくれる、ぶれない軸を持った人。',
+ hard:'変化を嫌い、ルーティンを重視する人。ワクワクが消えて退屈しやすくなります。',
+ after:'デートやお出かけが充実。マンネリ防止が得意です。',
+ marry:'日常の中に小さな冒険を。ただし「安定」の価値も認めると、関係が深まります。',
+ kon:'出会いの量は強み。あとは「誰と安心して日常を過ごせるか」という軸を持てると迷いません。',
+ unnoticed:'刺激を求めるのは、深く関わって傷つくことを避ける行動になっていることも。',
+ seen:'明るくて楽しい人。ただ「モテそうで本気か分からない」と見られることも。',
+ act:'「盛り上がった人」と「落ち着けた人」を別々にメモして、違いを比べてみる。'},
+{id:'09',e:'🐺',nm:'一途なオオカミ',kind:'深いつながりタイプ',c:'#8496E0',tags:['一途','深い愛','絆'],
+ p:[55,65,60,75,40,45,55,55,95,30,30,55,65,60],
+ catch:'広く浅くより、「この人」と深く。',
+ desc:'一度好きになるととことん深く愛する、絆を大切にするタイプ。広く浅い関係よりも、特別な相手との深いつながりを求める深い愛の探求者です。',
+ str:['一途で誠実','相手を深く理解しようとする','絆が深まるほど安定する'],
+ habit:['愛情が重くなりすぎることがある','不安になると確認や束縛が出やすい','好きになるまで時間がかかり、裏切りに敏感'],
+ attract:'自分だけを特別扱いしてくれる、誠実でブレない人。',
+ long:'あなたの深い愛を受け止め、安心を言葉と行動で示してくれる人。',
+ hard:'複数人と同時進行するなど、気持ちがはっきりしない人。強い不安を感じやすくなります。',
+ after:'愛情が深く、忠誠心が強い。二人の世界を大切にするあまり、閉じやすい面もあります。',
+ marry:'唯一無二のパートナーシップを築けます。友人や家族との関係も残しておくと、心の余裕が生まれます。',
+ kon:'「この人」と決めるまで時間がかかる分、会う人数が少ないと選択肢が狭まりがち。まずは「知ってから決める」で。',
+ unnoticed:'一途さは大きな強みですが、時に「失う不安」の裏返しになっていることも。',
+ seen:'クールで誠実。近づきにくい面もありますが、本命には熱い人。',
+ act:'不安な時は「確認」ではなく「気持ちの共有」（私は今こう感じてる）で伝える。'},
+{id:'10',e:'🦊',nm:'冷静な恋愛参謀キツネ',kind:'論理バランスタイプ',c:'#5FCBB2',tags:['論理','バランス','戦略'],
+ p:[60,65,40,45,70,55,40,80,45,50,55,30,15,65],
+ catch:'恋も戦略。賢く幸せをつかむ。',
+ desc:'感情だけでなく論理的にも考えられる、バランスの取れた恋愛上手。相手の本質を見抜き、賢く幸せをつかみます。',
+ str:['感情と論理のバランスがいい','距離の取り方や間合いがうまい','相手の本質を見抜ける'],
+ habit:['感情を分析しても伝えないまま終わる','合理的すぎて冷たく見える','戦略的に動いて本音が出せない'],
+ attract:'頭の回転が速く、一緒に話していて刺激的な人。',
+ long:'あなたの分析に付き合いつつ、素直に感情を見せてくれる人。',
+ hard:'感情的で話が飛びやすく、論理が通じにくい人。ストレスが溜まりやすくなります。',
+ after:'冷静に関係を運営し、ケンカも建設的に解決。ただし感情面のフォローを忘れがちです。',
+ marry:'役割分担や意思決定が上手。「正しさ」より「安心」を優先する場面もつくってあげて。',
+ kon:'効率よく見極められる反面、「分かっているのに動かない」に注意。小さな一歩を先に出すのがコツ。',
+ unnoticed:'論理は、感情を守るための鎧でもあります。本当は気持ちにとても敏感です。',
+ seen:'頭が良くて頼れる人。ただ「何を考えているか分からない」と思われることも。',
+ act:'デートの後、事実ではなく「感情」を一言で記録する（楽しい／緊張／安心）。'},
+{id:'11',e:'🐼',nm:'ピュアな甘えんぼパンダ',kind:'癒しピュアタイプ',c:'#F28FAF',tags:['素直','癒し','純粋'],
+ p:[30,45,80,90,20,45,60,35,75,30,45,55,85,25],
+ catch:'素直で、まっすぐで、愛したい人。',
+ desc:'素直でまっすぐ。一緒にいるだけで心がほっとする、癒しの存在。愛されながら愛したい、ピュアな恋の達人です。',
+ str:['飾らない素直さがある','そばにいる人に安心感を与える','愛情表現が純粋'],
+ habit:['相手に依存しやすい','ひとりが苦手で関係を急ぎやすい','嫌なことを言えず溜め込む'],
+ attract:'包容力があり、甘えさせてくれる人。',
+ long:'あなたの素直さを大切にしつつ、自立も促してくれる人。',
+ hard:'忙しくて連絡が少なく、感情表現が乏しい人。寂しさが募りやすくなります。',
+ after:'甘えん坊で、スキンシップや会話を大切にします。',
+ marry:'温かい家庭を築けます。互いの自立も意識して、ひとり時間や趣味を尊重し合いましょう。',
+ kon:'寂しさで決めないことが大切。「一緒にいて安心」と「ひとりでも大丈夫」の両方を確認して。',
+ unnoticed:'人に愛されたい気持ちが強く、断ることが苦手な面があります。',
+ seen:'癒し系で守ってあげたくなる人。ただ「受け身」に見えることも。',
+ act:'ひとりでも満たされる時間（趣味・友人）を、週1回予約する。'},
+{id:'12',e:'🐴',nm:'未来を描くカリスマ馬',kind:'カリスマビジョンタイプ',c:'#EFB54A',tags:['カリスマ','ビジョン','挑戦'],
+ p:[85,40,55,40,75,75,80,50,60,75,75,80,40,75],
+ catch:'未来を描き、一緒に叶えていく人。',
+ desc:'大きな夢や目標に向かって進み、一緒に成長できるパートナーを求めるタイプ。カリスマ性あふれる恋のリーダーです。',
+ str:['ビジョンを語って引っ張れる','ブレない軸と行動力がある','周囲を巻き込む魅力がある'],
+ habit:['相手に高い期待を持ちすぎる','仕事や目標を優先して相手を後回しにする','理想の未来を押し付けてしまう'],
+ attract:'目標を応援してくれ、自分の可能性を信じてくれる人。',
+ long:'あなたのビジョンに共感しつつ、日常の安心も支えてくれる人。',
+ hard:'目標がなく、変化を嫌う人。温度差が生まれやすくなります。',
+ after:'未来の話が多く、二人の目標を設計したがります。忙しいとすれ違いも。',
+ marry:'共通のビジョン（住まい・仕事・子ども）を共有し、定期的に「二人の未来会議」をひらくと◎。',
+ kon:'理想の像が高くなりがち。「ビジョンが違う」と切る前に、根っこの価値観が近いかを確認して。',
+ unnoticed:'リードしているようで、実は「自分の夢を一緒に喜んでくれる人」を強く求めています。',
+ seen:'憧れられるリーダー。ただ「完璧そうで隙が見えない」と思われることも。',
+ act:'相手の話に、意見を返す前に「なるほど」で一度受け止める習慣をつける。'}
+];
+
+/* ===== 既存質問プール（ORDERで10問を選定） =====
+ s: A恋愛行動 / B恋愛コミュニケーション / C婚活現在地
+ d: 測定項目, r:1=逆転項目, w:重み */
+const Q=[
+/* A 恋愛行動 */
+{s:'A',d:'act',w:1.2,t:'気になる人ができたら、待つよりも自分から連絡や誘いをすることが多い。'},
+{s:'A',d:'act',w:1,t:'恋のチャンスが来たら、あれこれ迷う前に、まず動いてしまう。'},
+{s:'A',d:'cau',w:1.2,t:'付き合う前に、相手の人柄や言動をじっくり観察してから気持ちを決めたい。'},
+{s:'A',d:'exp',w:1,t:'「好き」「ありがとう」などの気持ちは、照れずに言葉にして伝えられる。'},
+{s:'A',d:'sec',w:1,t:'会えない日が続くと、相手の気持ちが少し気になってしまう。'},
+{s:'A',d:'sec',w:1.2,t:'恋人には、何があっても味方でいてくれる安心感を一番に求めたい。'},
+{s:'A',d:'ind',w:1.2,t:'恋人ができても、ひとりの時間や自分の趣味は絶対に手放したくない。'},
+{s:'A',d:'spd',w:1,t:'気持ちが固まったら、付き合うまでの展開は早い方がいい。'},
+{s:'A',d:'ide',w:1,t:'恋愛には、運命的なときめきや、ドラマのような瞬間を求めてしまう。'},
+{s:'A',d:'rea',w:1,t:'恋愛でも、収入・住む場所・家族観など、現実的な条件はかなり気にする。'},
+{s:'A',d:'one',w:1.2,t:'一度好きになったら、他の人に目移りすることはほとんどない。'},
+{s:'A',d:'sti',w:1,t:'恋愛には、安定よりも、ワクワクや新しい刺激があってほしい。'},
+/* B コミュニケーション */
+{s:'B',d:'EI',w:1,t:'初対面の相手にも、自分から話しかけて場を温められる。'},
+{s:'B',d:'EI',w:1,r:1,t:'大人数の場より、1対1でじっくり話す方が本来の自分を出せる。'},
+{s:'B',d:'EI',w:1,t:'恋愛の悩みや気持ちは、友人にもよく話して整理する。'},
+{s:'B',d:'NS',w:1,t:'相手の第一印象や「なんとなくの直感」を、けっこう信じている。'},
+{s:'B',d:'NS',w:1,r:1,t:'相手のことは、実際の言動や実績を見てから判断するタイプだ。'},
+{s:'B',d:'NS',w:1,t:'二人の将来や理想の未来を想像すると、気持ちが盛り上がる。'},
+{s:'B',d:'FT',w:1,t:'相手が落ち込んでいたら、解決策より先に、まず気持ちに寄り添う。'},
+{s:'B',d:'FT',w:1,r:1,t:'意見の違いは、感情より筋道を立てて話し合って解決したい。'},
+{s:'B',d:'FT',w:1,t:'相手の些細な表情や声のトーンの変化にも、気づきやすい。'},
+{s:'B',d:'PJ',w:1,t:'デートや連絡のペースなど、ある程度見通しが立っている方が安心する。'},
+{s:'B',d:'PJ',w:1,r:1,t:'予定を決めすぎず、その場のノリや流れで動く方が楽しい。'},
+{s:'B',d:'PJ',w:1,t:'恋愛や結婚についても、いつまでに何をするか、逆算して考える方だ。'},
+/* C 現在地（結果が透けないよう生活・行動ベース） */
+{s:'C',d:'selfU',w:1,t:'恋愛で「これだけは譲れない」ことを、すぐに3つ挙げられる。'},
+{s:'C',d:'ideal',w:1,t:'理想の相手について、条件よりも「どんな空気感の人か」を具体的に話せる。'},
+{s:'C',d:'refl',w:1.3,r:1,t:'これまでの恋愛は、相手が変わっても、なぜか同じような理由で終わってきた気がする。'},
+{s:'C',d:'impr',w:1,t:'初対面の日は、服装・髪型・清潔感・表情など「どう見えるか」を事前に整えてから会う。'},
+{s:'C',d:'look',w:1,t:'全身が映る鏡や自分の写真を見ても、わりと素直に「悪くない」と思える。'},
+{s:'C',d:'esteem',w:1,t:'「自分は誰かに大切にしてもらえる人間だ」と、自然に思える。'},
+{s:'C',d:'comm',w:1,t:'初対面の異性とでも、沈黙を怖がらずに会話を続けられる。'},
+{s:'C',d:'meet',w:1,t:'この3か月で、新しく知り合った異性（仕事・趣味・紹介・アプリなど問わず）が何人もいる。'},
+{s:'C',d:'actv',w:1,t:'休日に、新しい人と会える場所（イベント・習い事・集まり）へ月1回以上は出かけている。'},
+{s:'C',d:'disc',w:1.2,r:1,t:'気になる人がいても「本当にこの人でいいのか」と迷い続けて、決められないことが多い。'},
+{s:'C',d:'will',w:1,t:'「いずれ結婚したい」ではなく、結婚のために必要なことを、今すでに考えたり動いたりしている。'},
+{s:'C',d:'time',w:1,t:'結婚したい時期は、ここ1〜2年以内とはっきり決まっている。'}
+];
+const CHOICES=['とても当てはまる','やや当てはまる','どちらともいえない','あまり当てはまらない','全く当てはまらない'];
+const CHOICE_SCORE=[5,4,3,2,1]; // 上から順に付与する点数
+const FEAT=['act','cau','exp','sec','ind','spd','ide','rea','one','sti','EI','NS','FT','PJ'];
+
+/* ===== 四柱推命（日干10種）=====
+ warm=感情表現の熱量 calm=慎重さ free=自由欲求 deep=安心・深いつながり欲求 (0-100) */
+const STEMS=[
+{k:'甲',el:'木',yy:'陽',img:'大樹',warm:70,calm:40,free:70,deep:45,
+ nature:'まっすぐ伸びる大樹のように、正直で向上心のある性質。',wants:'尊敬できて、お互いの成長を応援し合える関係',express:'言葉や行動でまっすぐに。頼られると力が出るタイプ',safe:'自分の意見を否定せず、信頼してくれる関係',strain:'弱音を見せず、頑張りすぎてしまうところ'},
+{k:'乙',el:'木',yy:'陰',img:'草花',warm:55,calm:65,free:50,deep:65,
+ nature:'しなやかで柔らかく、周りに合わせながらも芯のある性質。',wants:'気遣いを分かってくれる、穏やかな関係',express:'さりげない気配りや、やさしい言葉で',safe:'急かされず、安心して本音を出せる関係',strain:'相手に合わせすぎて、自分の気持ちが見えなくなるところ'},
+{k:'丙',el:'火',yy:'陽',img:'太陽',warm:90,calm:20,free:60,deep:45,
+ nature:'明るく華やかで、周りを照らす太陽のような性質。',wants:'自分の明るさを喜んでくれる、オープンな関係',express:'感情豊かに、ストレートに',safe:'隠し事がなく、風通しのいい関係',strain:'元気に振る舞い続けて、疲れを隠してしまうところ'},
+{k:'丁',el:'火',yy:'陰',img:'灯火',warm:60,calm:60,free:35,deep:85,
+ nature:'静かに燃える灯火のように、繊細で情の深い性質。',wants:'心の奥まで分かり合える、深い関係',express:'特別な人にだけ見せる、こまやかな優しさで',safe:'静かな時間を共有でき、気持ちを汲んでくれる関係',strain:'気持ちを溜め込んで、急に距離を置いてしまうところ'},
+{k:'戊',el:'土',yy:'陽',img:'山',warm:45,calm:75,free:40,deep:75,
+ nature:'どっしりとした山のように、頼れて包容力のある性質。',wants:'信頼と安定のある、揺るがない関係',express:'言葉より、行動や責任感で',safe:'約束が守られ、変化が急すぎない関係',strain:'頼られ役を背負い込んでしまうところ'},
+{k:'己',el:'土',yy:'陰',img:'田畑',warm:50,calm:65,free:30,deep:80,
+ nature:'育てて受け止める田畑のように、世話好きで受容力のある性質。',wants:'感謝し合い、支え合える関係',express:'世話を焼く、気配りで',safe:'頼ってくれて、感謝を伝えてくれる関係',strain:'尽くしすぎて、自分の不満に蓋をしてしまうところ'},
+{k:'庚',el:'金',yy:'陽',img:'鋼',warm:55,calm:45,free:75,deep:40,
+ nature:'はっきり決断する鋼のように、正義感が強く芯のある性質。',wants:'対等で、率直に話し合える関係',express:'はっきりした言葉と行動で',safe:'本音でぶつかっても壊れない信頼',strain:'強がって、弱さを出せないところ'},
+{k:'辛',el:'金',yy:'陰',img:'宝石',warm:45,calm:70,free:55,deep:60,
+ nature:'磨かれた宝石のように、繊細で美意識の高い性質。',wants:'価値観と感性を大切にしてくれる関係',express:'丁寧な言葉選びや、こだわりのある贈り物で',safe:'自分らしさを認めてくれる関係',strain:'完璧を求めて、自分も相手も傷つきやすくなるところ'},
+{k:'壬',el:'水',yy:'陽',img:'大河',warm:60,calm:30,free:90,deep:50,
+ nature:'大河のように自由でスケールが大きく、包容力のある性質。',wants:'束縛されず、視野を広げ合える関係',express:'おおらかに、話題の豊富さで',safe:'自由を認めた上で、帰る場所になってくれる関係',strain:'自由を守りすぎて、深い関係から流れていってしまうところ'},
+{k:'癸',el:'水',yy:'陰',img:'雨露',warm:40,calm:70,free:45,deep:80,
+ nature:'静かな雨露のように、感受性豊かで思慮深い性質。',wants:'言葉にしなくても通じ合える、静かな安心感',express:'控えめな優しさと、聞き役として',safe:'心の機微を汲み取ってくれる関係',strain:'察してもらえず、心を閉じてしまうところ'}
+];
+const EL={
+ '木':{c:'#5DBB6B',more:'成長意欲や「自分らしく生きたい」気持ちが強め。相手にも前向きさを求めやすい傾向。',less:'「自分はこうしたい」を出す力を、意識して補うとバランスが整います。'},
+ '火':{c:'#FF7A59',more:'感情表現や情熱が豊か。好意も気持ちの浮き沈みも、表に出やすい傾向。',less:'気持ちを言葉にするのが控えめになりがち。感謝や好意を意識して口にすると◎。'},
+ '土':{c:'#D9A441',more:'安定や信頼を重んじ、受け止める力が強め。変化には慎重になりやすい傾向。',less:'安心できる土台づくりや、ペースを整えることを意識すると落ち着きます。'},
+ '金':{c:'#8E9BB0',more:'決断力や美意識が高く、けじめを大切にする傾向。白黒つけたくなる面も。',less:'「決める」「線を引く」が後回しになりがち。自分のNGラインを言葉にしておくと◎。'},
+ '水':{c:'#4E8FE0',more:'柔軟で感受性が高く、相手の空気を読みやすい傾向。考え込みやすい面も。',less:'相手の気持ちを想像したり、視野を広げたりする時間を意識的に持つと◎。'}
+};
+
+/* ===== NEXT ACTION ===== */
+const ACT={
+LOVE:{no:'01',en:'LOVE YOURSELF',ja:'まずは、自分を磨く。',c:'#FF7FA6',
+ todo:['スマホの写真から「自分がいい感じに写っている1枚」を選び、その理由（表情・光・服）をメモする','初対面で見られやすい3点（清潔感・表情・服の似合い方）を、今日鏡の前でチェックする','自分の好きなところを1日1つ、スマホにメモする（まず1週間）'],
+ bridge:'今のあなたに必要なのは、出会いの数を増やすことより、あなたの魅力が第一印象でちゃんと伝わる状態を整えることかもしれません。',
+ svc:[{n:'婚活エステ',d:'第一印象や自信づくりを、美容の面からサポートします。'}]},
+KNOW:{no:'02',en:'KNOW YOURSELF',ja:'まず、自分を知る。',c:'#8E7CF0',
+ todo:['過去の恋愛を3人分、「惹かれた理由」と「終わった理由」を1行ずつ書き出す','相手に求める条件を「絶対」「できれば」「気にしない」に分ける','「一緒にいて楽だった瞬間」を3つ思い出して、共通点を探す'],
+ bridge:'今のあなたに必要なのは、出会いを増やすことより、自分がどんな相手と幸せになれるのかを整理することかもしれません。',
+ svc:[{n:'恋愛コーチング',d:'自分の恋愛パターンや、合う相手像を、対話しながら整理します。'},{n:'恋愛四柱推命',d:'生まれ持った性質から、恋愛で大切にしたいことや相手選びの視点を深めます。'}]},
+MORE:{no:'03',en:'MEET MORE',ja:'考えるより、出会おう。',c:'#3DB8E8',
+ todo:['今月、行ったことのない場所（イベント・習い事・集まり）に1回申し込む','知人2人に「いい人がいたら紹介してね」と伝える','会った人を「また会いたい／どちらでも／違う」の3段階だけでメモする（深く考えない）'],
+ bridge:'自己理解や準備はある程度整っているようです。次は、考えるより「実際に会って確かめる回数」を増やすと、景色が変わるかもしれません。',
+ svc:[{n:'マッチングイベント',d:'新しい人と自然に会話できる場で、出会いの数と経験値を増やせます。'}]},
+SERIOUS:{no:'04',en:'MEET SERIOUSLY',ja:'出会うなら、結婚したい人と。',c:'#F2A03D',
+ todo:['「いつまでに結婚したいか」と「譲れない価値観3つ」を書き出す','最近会った人のうち、結婚への意思が自分と同じだった人が何割いたか振り返る','結婚相談所の説明を1社、聞くだけ聞いてみる（入会前提でなくてOK）'],
+ bridge:'結婚への意思がはっきりしている今は、出会いの数よりも、「同じ温度で結婚を考えている人」と会えるかどうかがポイントになりそうです。',
+ svc:[{n:'結婚相談所',d:'結婚を前提とした出会いと、条件だけでなく価値観まで確認できる活動をサポートします。'}]},
+OK:{no:'—',en:'KEEP YOUR PACE',ja:'今のペースを、大切に。',c:'#7CC68A',
+ todo:['今の恋愛・婚活で「うまくいっていること」を3つ書き出す','月に1回、新しい場所や人との予定を入れてみる','「どんな人といる時の自分が好きか」を1行メモする'],
+ bridge:'',svc:[]}
+};
+const AX=[
+ {k:'EI',l:'外向',r:'内向',ln:'気持ちを外に出し、人と関わりながら整理する。',rn:'ひとりでじっくり考え、深く心を開く。'},
+ {k:'NS',l:'直感',r:'現実',ln:'ときめきやフィーリングを大切に、未来を描く。',rn:'言動や事実を確かめて、地に足のついた判断をする。'},
+ {k:'FT',l:'共感',r:'論理',ln:'気持ちに寄り添い、心の通い合いを重視する。',rn:'筋道や納得感を重視し、冷静に向き合う。'},
+ {k:'PJ',l:'計画',r:'柔軟',ln:'見通しを立てて、安心して進めたい。',rn:'流れや変化を楽しみ、自由度を残したい。'}
+];
+const CONF={
+ talk:{n:'会話',c:'話の切り口やテンポの違いから「伝わっていない」と感じやすい組み合わせ。結論から話すか、経緯から話すか、お互いの好みを先に聞いてみましょう。',l:'長い付き合いでは、「話し方のクセ」を一度言葉にして共有すると、すれ違いが減ります。'},
+ affect:{n:'愛情表現',c:'愛情表現の量や形が違い、「愛されていないのかも」と誤解しやすい組み合わせ。言葉派か、行動派か、早めに共有を。',l:'長期では、「してほしいこと」を具体的に伝え合うことが安心につながります。'},
+ dist:{n:'距離感',c:'会う頻度・連絡頻度・ひとり時間の感覚がズレやすい組み合わせ。最初に「心地いい頻度」を話し合うと衝突が減ります。',l:'長期では、ひとり時間と二人の時間の配分を、定期的に見直すのがおすすめです。'},
+ speed:{n:'スピード',c:'距離の縮め方や返事のペースにズレが出やすい組み合わせ。片方が焦り、片方が置いていかれた気持ちになりがちです。',l:'長期では、大きな決断こそ「今どのくらいの気持ち？」と温度を確認し合うのが鍵です。'},
+ values:{n:'価値観',c:'理想や現実、将来の描き方が違いやすい組み合わせ。細かな条件より「大切にしたいこと」を先に共有しましょう。',l:'長期では、暮らし方・お金・家族観を、早めに、穏やかに話し合っておくと安心です。'}
+};
+
+/* ===== 計算ロジック ===== */
+const IDX={};FEAT.forEach((k,i)=>IDX[k]=i);
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+
+// 回答(1-5)→各項目0-100（逆転項目は反転、重み付き平均）
+function calcD(ans){
+  const sum={},w={};
+  Q.forEach((q,i)=>{
+    if(!TYPE_ORDER.includes(i)||!Number.isInteger(ans[i])||ans[i]<1||ans[i]>5) return;
+    let s=(ans[i]-1)/4*100; if(q.r) s=100-s;
+    sum[q.d]=(sum[q.d]||0)+s*q.w; w[q.d]=(w[q.d]||0)+q.w;
+  });
+  const D=Object.fromEntries(Q.map(q=>[q.d,50])); Object.keys(sum).forEach(k=>D[k]=Math.round(sum[k]/w[k]));
+  return D;
+}
+const featOf=D=>FEAT.map(k=>D[k]);
+
+// LOVE TYPE 判定：プロトタイプとの重み付き距離。差が1.5未満なら 4軸の距離→四柱の五行親和→番号 の順で決定
+const ELPREF={'木':['02','08','12'],'火':['01','02','08'],'土':['04','05','11'],'金':['07','10','04'],'水':['03','06','09']};
+function matchType(u){
+  const measured=new Set(TYPE_ORDER.map(i=>Q[i].d));
+  return T.map((t,n)=>({n,id:t.id,d:Math.sqrt(FEAT.reduce((sum,k,i)=>sum+(measured.has(k)?(u[i]-t.p[i])**2:0),0)/[...measured].filter(k=>FEAT.includes(k)).length)}))
+    .sort((a,b)=>a.d-b.d||a.n-b.n);
+}
+
+// NEXT ACTION スコア
+function calcActions(D){
+  // Only the three current-state questions contribute to service suggestions.
+  return {KNOW:100-D.selfU,LOVE:100-D.impr,MORE:100-D.meet,SERIOUS:0};
+}
+const TH=55, PRIO=['KNOW','LOVE','SERIOUS','MORE'];
+function pickActions(S){
+  const list=PRIO.map(k=>({k,v:S[k]})).filter(x=>x.v>=TH)
+    .sort((a,b)=>Math.abs(a.v-b.v)<3?PRIO.indexOf(a.k)-PRIO.indexOf(b.k):b.v-a.v);
+  if(!list.length) return {primary:'OK',second:null};
+  const p=list[0]; let s=list.find((x,i)=>i>0&&p.v-x.v<=25)||null;
+  if(p.k==='SERIOUS'&&s&&s.k==='MORE') s=null; // 結婚相談所で出会いも確保できるため重複提案しない
+  return {primary:p.k,second:s?s.k:null};
+}
+function reasons(k,D){
+  const R=[];
+  if(k==='KNOW'){
+    if(D.selfU<50)R.push('恋愛で「譲れないこと」が、まだ言葉になりきっていない');
+    if(D.ideal<50)R.push('理想の相手像が、条件中心で「空気感」まで見えていない');
+    if(D.refl<50)R.push('過去の恋愛に共通するパターンを、整理しきれていない');
+    if(D.disc<50)R.push('気になる人がいても、決めきれず迷いやすい');
+    if(!R.length)R.push('自分の恋愛パターンを、もう一歩だけ言葉にしておくと選びやすくなる');
+  }else if(k==='LOVE'){
+    if(D.impr<50)R.push('初対面での「見え方」を整える意識が、まだ控えめ');
+    if(D.look<50)R.push('自分の見た目に、素直に「OK」を出しにくい');
+    if(D.esteem<50)R.push('「大切にしてもらえる」という感覚が、揺らぎやすい');
+    if(D.meet>=60&&D.impr<50)R.push('出会いはあるのに、魅力が第一印象で伝わりきっていない可能性がある');
+    if(!R.length)R.push('自信を少し底上げすると、魅力がもっと伝わりやすくなる');
+  }else if(k==='MORE'){
+    if(D.meet<50)R.push('最近新しく知り合う異性の数が、少なめ');
+    if(D.actv<50)R.push('新しい人と会える場所へ出かける機会が、少なめ');
+    if(D.comm<50)R.push('初対面の会話に、もう少し慣れがあると楽になる');
+    R.push('自己理解や準備は進んでいるので、次は「会って確かめる」段階');
+  }else if(k==='SERIOUS'){
+    if(D.will>=65)R.push('結婚への意思がはっきりしている');
+    if(D.time>=60)R.push('結婚したい時期が、具体的に見えている');
+    if(D.meet>=50&&D.disc<60)R.push('出会いはあっても、結婚まで進みにくさを感じている可能性がある');
+    if(!R.length)R.push('結婚を意識した活動へ、少しずつ比重を移していける状態');
+  }
+  return R.slice(0,3);
+}
+
+function calcShichu(){return null;} // Accurate solar-term/timezone calculation is not implemented.
+
+// 回答×四柱の統合（ギャップ検出）
+function integrate(D,sh){
+  const L=[],S=sh&&sh.S;
+  if(S){
+    const add=(g,t,b)=>L.push({g,t,b});
+    const nm=`${S.k}（${S.img}）`;
+    if(D.ind>=62&&S.deep>=65) add(D.ind-50+S.deep-50,'表面は自由、本来は安心もかなり大事',`回答では自立した恋愛を好む傾向が出ていますが、四柱推命の${nm}には、心のつながりや安心感を強く求める面があります。表面上は自由な関係を好むように見えても、本来は「安心させてくれる人」もかなり重要なタイプ。相手選びでは「束縛しない人」だけでなく、「安心させてくれる人」という視点も入れてみましょう。`);
+    if(D.sec>=62&&S.free>=70) add(D.sec-50+S.free-50,'安心を求めながら、実は自由な時間も必要',`回答では安心感を強く求める傾向が出ていますが、${nm}には自由や余白を必要とする面があります。「そばにいてほしい」と「ひとりの時間も欲しい」は両立します。相手には「安心させてくれる人」であると同時に「ひとり時間を尊重してくれる人」を選ぶと、無理なく続きやすくなります。`);
+    if(D.act>=62&&S.warm<=50) add(D.act-50+50-S.warm,'行動的に見えて、本来の表現は静か',`回答では自分から動く積極さが出ていますが、${nm}の本来の表現は控えめで落ち着いたもの。アクティブに振る舞うほど、内側では気を張っているかもしれません。頑張りすぎた日は、無理に盛り上げず「今日は静かに過ごしたい」と伝えて大丈夫です。`);
+    if(D.act<=42&&S.warm>=70) add(50-D.act+S.warm-50,'控えめに見えて、本来は熱量が高い',`回答では慎重で控えめな面が出ていますが、${nm}には本来、熱量や表現力があります。自分から動くのをためらう分、気持ちが内側に溜まりやすいかも。「好き」を小さくでも外に出してみると、恋が動き出しやすくなります。`);
+    if(D.cau>=62&&S.calm<=35) add(D.cau-50+50-S.calm,'慎重に動いているけれど、本来は直感で進みたい',`回答では慎重に見極める傾向が強い一方、${nm}は本来、直感やスピード感を大切にする性質。慎重さは、過去の経験から身についた「防御」かもしれません。頭で考える時間と、会って感じる時間、両方を持つのがおすすめです。`);
+    if(D.cau<=40&&S.calm>=65) add(50-D.cau+S.calm-50,'進めるのは早いけれど、本来はじっくり信頼を積みたい',`回答では素早く動く傾向が出ていますが、${nm}は本来、時間をかけて信頼を築きたい性質。勢いで進んだあとに不安が出やすいのは、そのせいかもしれません。関係を進める前に「この人といて安心できるか」を確かめる一呼吸を。`);
+  }
+  L.sort((a,b)=>b.g-a.g);
+  let out=L.slice(0,2);
+  if(S&&!out.length) out=[{t:'回答と四柱推命が、よく重なっています',b:`回答から見えた恋愛の傾向と、${S.k}（${S.img}）の性質が自然につながっています。自分の「らしさ」を素直に出したときに、関係がうまく育ちやすいタイプ。「自分のままで大丈夫」という感覚を、大切にしてみてください。`}];
+  if(!S){ // 四柱なしの場合は回答内のギャップのみ
+    if(D.ind>=62&&D.sec>=62) out.push({t:'自由を好むのに、安心も強く求める',b:'「ひとりの時間も大切」と「安心できる人がいい」が、どちらも強く出ています。矛盾ではなく、あなたの大切な条件。「束縛しない人」だけでなく「安心させてくれる人」という視点でも、相手を見てみましょう。'});
+    if(D.act>=62&&D.cau>=62) out.push({t:'積極的なのに、慎重でもある',b:'動く力と見極める力の両方が高め。気持ちが先走る日と、立ち止まる日が交互に来やすいタイプです。「進める日」と「確かめる日」を分けると、楽になります。'});
+    if(!out.length) out.push({t:'四柱推命と組み合わせると、さらに深まります',b:'生年月日を入力すると、「生まれ持った性質」と今回の回答のズレや重なりから、自分でも気づいていない恋愛傾向をお伝えできます。'});
+  }
+  return out;
+}
+
+// 相性（12×12）：自分の実スコア vs 相手タイプのプロトタイプ。総合％は出さず、5観点で表示
+const CATS=['talk','affect','dist','speed','values'];
+function compat(u,j){
+  const p=T[j].p,d=k=>Math.abs(u[IDX[k]]-p[IDX[k]]);
+  const raw={
+    talk:100-(d('EI')*.3+d('NS')*.35+d('FT')*.35)*1.1,
+    affect:100-(d('exp')*.5+d('FT')*.3+d('sec')*.2)*1.1,
+    dist:100-(d('ind')*.5+d('sec')*.5)*1.1,
+    speed:100-(d('spd')*.6+d('act')*.2+d('cau')*.2)*1.1,
+    values:100-(d('ide')*.25+d('rea')*.25+d('one')*.25+d('PJ')*.25)*1.1};
+  const stars={};CATS.forEach(k=>{const v=raw[k];stars[k]=v>=85?5:v>=72?4:v>=58?3:v>=45?2:1;});
+  const spread=(d('act')+d('ind')+d('EI')+d('NS')+d('FT'))/5;
+  const n4=CATS.filter(k=>stars[k]>=4).length;
+  const label=n4>=3?'似た者同士で、安心しやすい関係':(spread>=24&&stars.values>=3&&stars.dist>=3)?'違いを補い合える関係':'刺激と学びが多い関係';
+  const order=['dist','speed','talk','affect','values'];
+  const low=order.reduce((a,b)=>stars[b]<stars[a]?b:a);
+  return {raw,stars,spread,label,low,j};
+}
+function topMatches(u){
+  const all=T.map((_,j)=>compat(u,j));
+  const talk=[...all].sort((a,b)=>b.raw.talk-a.raw.talk).slice(0,2);
+  const val=[...all].sort((a,b)=>b.raw.values-a.raw.values).slice(0,2);
+  let comp=all.filter(x=>x.spread>=22).sort((a,b)=>(b.raw.values+b.raw.dist)-(a.raw.values+a.raw.dist));
+  if(!comp.length) comp=[...all].sort((a,b)=>b.spread-a.spread);
+  return {talk,val,comp:comp.slice(0,2)};
+}
+
+/* ===== UI ===== */
+const IMGS={"01": "assets/type-01.webp", "02": "assets/type-02.webp", "03": "assets/type-03.webp", "04": "assets/type-04.webp", "05": "assets/type-05.webp", "06": "assets/type-06.webp", "07": "assets/type-07.webp", "08": "assets/type-08.webp", "09": "assets/type-09.webp", "10": "assets/type-10.webp", "11": "assets/type-11.webp", "12": "assets/type-12.webp", "logo": "assets/logo.jpg"};
+Q.push({s:'SERVICE',d:'marriage',t:'結婚を希望する時期を教えてください。',options:['1年以内に結婚したい','2年以内に結婚したい','いずれ結婚したいが、急いでいない','まだ決めていない','今は結婚を希望していない']});
+Q.push({s:'SERVICE',d:'concern',t:'今の恋愛・婚活で、一番気になっていることは？',options:['同じ恋愛パターンを繰り返してしまう','自信や自分の魅力の伝え方に悩んでいる','新しい出会いを増やしたい','結婚に向けた進め方を相談したい','今は大きな悩みはなく、まず自分を知りたい']});
+const TYPE_ORDER=[0,2,3,5,6,9,10,21];
+const ORDER=[...TYPE_ORDER,36,37]; // A/B/Cを混ぜて出題し、意図を悟らせない
+const st={screen:'intro',pos:0,ans:[],birth:null,res:null};
+const app=()=>document.getElementById('app');
+const im=(id,size='56px')=>IMGS[id]?`<span class="animal"><img src="${IMGS[id]}" srcset="assets/type-${id}-384.webp 384w, ${IMGS[id]} 1254w" sizes="${size}" alt="${AN[Number(id)-1]}" width="1254" height="1254" loading="lazy" decoding="async"><b class="brand">unic MEET</b></span>`:'';
+const stars=n=>'★'.repeat(n)+'☆'.repeat(5-n);
+const AN=['うさぎ','ライオン','白鳥','ペンギン','コアラ','ねこ','フクロウ','イルカ','オオカミ','キツネ','パンダ','馬'];
+let lock=false;
+const SYM=['◎','○','△','▽','×'];
+
+function baseUrl(){
+  const u=new URL(CONFIG.SHARE_URL||location.href);u.search='';u.hash='';return u.href;
+}
+function resultUrl(){
+  const u=new URL(baseUrl());u.searchParams.set('type',T[st.res.type.n].id);u.searchParams.set('sub',T[st.res.sub.n].id);return u.href;
+}
+function lineHref(text){return 'https://line.me/R/msg/text/?'+encodeURIComponent(text);}
+function toolText(){return 'unic LOVE TYPE 12｜恋をもっと、あなたらしく。\n10問でわかる、あなたの恋愛タイプ診断🐰🦁🐺\n自分を知って、相手を知って、次の一歩まで。\n'+baseUrl();}
+function resText(t){return `私は「${t.e} ${t.nm}」でした！\n${t.catch}\nサブタイプ：${T[st.res.sub.n].nm}\n共有された恋愛タイプの解説を見る👇\n${resultUrl()}`;}
+function toast(m){const d=document.createElement('div');d.className='toast';d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),1800);}
+function copy(text){
+  const ok=()=>toast('コピーしました。LINEなどに貼り付けてください');
+  try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,()=>fb());return;}}catch(e){}
+  fb();
+  function fb(){const a=document.createElement('textarea');a.value=text;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok();}catch(e){toast('コピーできませんでした');}a.remove();}
+}
+
+function intro(){
+  return `<div class="hero">${IMGS.logo?`<img class="logo" src="${IMGS.logo}" alt="unic LOVE TYPE 12">`:'<h1>unic LOVE TYPE 12</h1>'}
+  <h1 class="catch">恋をもっと、<br>あなたらしく。</h1>
+  <p class="lead">自分を知る → 自分に合う相手を知る<br>→ 今やるべき一歩まで、まとめてわかる恋愛診断です。</p>
+  <div class="thumbs">${T.map(t=>`<div style="--c:${t.c}">${im(t.id)}</div>`).join('')}</div>
+  <div class="meta"><span>全10問・約3分＋生年月日入力</span><span>無料</span><span>男女どちらもOK</span></div>
+  <button class="btn" data-a="start">診断をはじめる</button>
+  <a class="btn line" target="_blank" rel="noopener" href="${lineHref(toolText())}">この診断をLINEで送る</a>
+  <button class="btn ghost small" data-a="copytool">リンク文をコピー</button>
+  <p class="note">※この診断は、恋愛傾向を楽しく知るためのオリジナルコンテンツです。心理学的に検証された心理検査や、医学的・科学的診断ではありません。占い（四柱推命）も、未来や相性を断定するものではなく、自己理解のヒントとして使います。</p></div>`;
+}
+function quiz(){
+  const pos=st.pos,qi=ORDER[pos],q=Q[qi],cur=st.ans[qi],choices=q.options||CHOICES;
+  return `<div class="qn"><span>${pos<8?'恋愛傾向・価値観':'今の状況'} Q${pos+1}</span><span>${pos+1} / ${ORDER.length}</span></div><div class="prog"><i style="width:${pos/ORDER.length*100}%"></i></div>
+  <p class="qtext">${q.t}</p><div class="ans">${choices.map((c,i)=>{const value=q.options?i+1:CHOICE_SCORE[i];return `<button data-s="${value}" class="${cur===value?'on':''}"><b>${q.options?i+1:SYM[i]}</b>${c}</button>`;}).join('')}</div>
+  ${pos>0?'<button class="back" data-a="back">← ひとつ前に戻る</button>':''}`;
+}
+function todayJST(){return new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}
+function validateBirth(value){
+  if(!value)return '生年月日を西暦・月・日ですべて入力してください。';
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(value))return '存在する日付を西暦・月・日で入力してください。';
+  const [y,m,d]=value.split('-').map(Number),date=new Date(0);
+  date.setUTCFullYear(y,m-1,d);date.setUTCHours(0,0,0,0);
+  if(y<1||date.getUTCFullYear()!==y||date.getUTCMonth()!==m-1||date.getUTCDate()!==d)return '存在しない日付です。月末の日数やうるう年をご確認ください。';
+  if(value>todayJST())return '未来の生年月日は入力できません。日付をご確認ください。';
+  return '';
+}
+function birthForm(){
+  const b=st.birth||{};
+  return `<div class="hero"><h1 class="catch" style="font-size:22px">STEP 1：生年月日を入力</h1><p class="lead">このあと、恋愛傾向・価値観8問と、結婚希望時期・現在のお悩み各1問に回答します。</p></div>
+  <div class="form"><div class="row"><label for="bd">生年月日（西暦・月・日／必須）</label><input id="bd" type="date" required aria-describedby="birth-purpose birth-error" value="${b.date||''}" max="${todayJST()}"></div>
+  <p id="birth-purpose" class="note">生年月日・出生時刻は四柱推命の補足用です。暦計算は現在準備中です。入力情報はこの画面のメモリ内でのみ扱い、サーバー送信・ブラウザ保存・共有URLへの記載は行いません。</p>
+  <div class="row"><label for="bt">出生時刻（任意）</label><input id="bt" type="time" value="${b.time||''}" ${b.noTime!==false?'disabled':''}><label class="chk"><input id="bn" type="checkbox" ${b.noTime!==false?'checked':''}> 不明</label></div>
+  <p class="note">年柱・月柱・日柱・時柱は現在準備中です。出生時刻が不明の場合は推測しません。動物タイプは質問への回答だけで決まります。</p>
+  <p id="birth-error" role="alert" style="color:#c43858;margin:12px 0"></p>
+  <button class="btn" data-a="go">10問の質問へ進む</button></div>`;
+}
+function loading(){return `<div class="center"><div class="spin">🔍</div><h2>あなたの恋愛タイプを見つけています…</h2><p class="lead" style="color:var(--sub)">恋愛心理の回答からタイプを判定中</p></div>`;}
+
+function sec(title,body,c){return `<section class="sec" ${c?`style="--c:${c}"`:''}><h2>${title}</h2>${body}</section>`;}
+const ul=a=>`<ul class="list">${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+function axisText(a,v){
+  const L=v>=50; const p=L?v:100-v; const w=L?a.l:a.r;
+  if(p<55) return `${a.l}と${a.r}のバランス型。場面によって使い分けられます。`;
+  return `${p>=70?'かなり':'やや'}${w}寄り。${L?a.ln:a.rn}`;
+}
+function axesHTML(D,c){
+  return `<div class="box" style="--c:${c}">${AX.map(a=>{
+    const v=D[a.k],pos=clamp(100-v,6,94),f=Math.round(v/20);
+    return `<div class="axis"><span>${a.l}</span><div class="bar"><i style="left:${pos}%"></i></div><span class="r">${a.r}</span></div>
+    <p class="axis-note">${a.l} ${'●'.repeat(f)}${'○'.repeat(5-f)} ${a.r}　（${a.l}${v}%／${a.r}${100-v}%）<br>${axisText(a,v)}</p>`;}).join('')}</div>`;
+}
+function shichuHTML(sh,c){return sec('四柱推命による補足',`<div class="box"><p><b>現在準備中</b></p><p>年柱・月柱・日柱・時柱の正確な暦計算は未実装です。節入り・干支の切り替わり・出生地とタイムゾーンを検証できるまで、鑑定結果は表示しません。出生時刻が不明の場合、時柱は推測しません。</p><p class="soft">上記の動物タイプ・解説・アドバイスは、恋愛心理の回答に基づくものです。</p></div>`,c);}
+function safeHttps(value){try{const u=new URL(value);return u.protocol==='https:'?u.href:'';}catch{return '';}}
+function esc(s){return String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));}
+function recommendation(ans){
+  const timing=ans[36],concern=ans[37];
+  const main=concern===1?'coaching':concern===2?'confidence':concern===3?'event':concern===4&&(timing===1||timing===2)?'marriage':'consult';
+  return {main,marriage:timing===1||timing===2,concern,timing};
+}
+function actionHTML(r){
+  const rec=r.recommendation;
+  const advice={coaching:['恋愛パターンを整理する時間','気になっているパターンを、出来事・気持ち・行動に分けて振り返ってみましょう。'],confidence:['あなたの魅力を言葉にすること','得意なことや大切にしている価値観を、ひとつずつ書き出すところから始めてみませんか。'],event:['新しい出会いへの小さな一歩','安心して参加できるイベントを一つ探すなど、無理のない範囲で出会いを増やしてみましょう。'],marriage:['結婚に向けた具体的な計画','希望時期に向けて、出会い方や活動ペースを整理してみましょう。まずは無料相談で状況を聞かせてください。'],consult:['自分に合った次の一歩を見つけること','急いで結論を出さず、今の気持ちを整理することから始めてみましょう。']}[rec.main];
+  const notes={coaching:'恋愛パターンのお悩みを選んだ回答からの提案です。',confidence:'自信や魅力の伝え方のお悩みを選んだ回答からの提案です。',event:'出会いを増やしたいという回答からの提案です。',marriage:'結婚希望時期と進め方のお悩みを選んだ回答からの提案です。',consult:'今回の希望時期・お悩みの回答を整理するための提案です。'};
+  return sec('今のあなたに必要なのは',`<div class="action"><h3>${advice[0]}</h3><p>${advice[1]}</p></div><p class="soft">${notes[rec.main]}性格や悩みを断定するものではありません。</p>`)+
+  sec('おすすめのunicサービス',`<p>まずは無料Zoom相談で、お悩みや希望を整理できます。サービスの利用は必要だと感じた場合だけで大丈夫です。</p>${rec.main==='event'?'<div class="svc"><b>婚活イベント</b><p>新しい人と出会い、会話を楽しむ機会としてご紹介します。</p></div>':''}${rec.main==='confidence'?'<div class="svc"><b>美容・自分磨き</b><p>あなたらしい魅力の伝え方や、気持ちよく過ごせる身だしなみを考える選択肢です。</p></div>':''}${rec.marriage?'<div class="svc"><b>結婚相談所という選択肢</b><p>1〜2年以内の結婚を希望するという回答に合わせ、連携する結婚相談所での活動もご相談いただけます。まずは無料相談から。入会は任意です。</p></div>':''}<div class="svc"><b>恋愛コーチング（提供予定）</b><p>60分 × 3回／27,000円（税込）<br>担当：御園拓也${CONFIG.COACH_CREDENTIAL?'<br>資格：'+esc(CONFIG.COACH_CREDENTIAL):''}</p><ol><li>恋愛傾向の理解と課題の整理</li><li>コミュニケーションや行動の改善</li><li>実践の振り返りと今後の行動計画</li></ol><p>無料Zoom相談を受けたあと、ご希望と必要性に応じてご検討いただけます。</p></div>`);
+}
+function consultationHTML(){const url=safeHttps(CONFIG.BOOKING_URL);return sec('あなたが幸せな恋愛・結婚を叶えるために',`<p>恋愛タイプ診断の結果をもとに、<br>今のあなたに必要なステップを<br>一緒に見つけませんか？</p><p>恋愛や婚活のお悩みを整理し、<br>あなたに合った次の一歩をご提案します。</p><p class="soft">無料Zoom恋愛・婚活相談／30分</p>${url?`<a class="btn" href="${esc(url)}" target="_blank" rel="noopener">無料Zoom恋愛・婚活相談を予約する</a>`:'<button class="btn" disabled>無料Zoom恋愛・婚活相談を予約する</button><p class="soft">予約受付は準備中です。</p>'}`);}
+function officialLineHTML(){const url=safeHttps(CONFIG.LINE_OA_URL);return sec('unicの公式LINE',`<p>恋愛・婚活に役立つ情報を<br>公式LINEで無料配信中！</p>${url?`<a class="btn line" href="${esc(url)}" target="_blank" rel="noopener">unicの公式LINEに登録する</a>`:'<button class="btn line" disabled>unicの公式LINEに登録する</button><p class="soft">登録リンクは準備中です。</p>'}<p class="soft">診断結果の共有とは別の機能です。登録は任意。すでに登録済みの方は再登録不要です。診断結果は登録せずにすべて閲覧できます。</p>`);}
+function compatPanel(u,j){
+  const c=compat(u,j),t=T[j],C=CONF[c.low];
+  return `<div class="mini" style="margin-top:12px">${im(t.id)}<div><b>${t.e} ${t.nm}</b><small>${c.label}</small></div></div>
+  <div class="cmp">${CATS.map(k=>`<span>${CONF[k].n}</span><span class="stars">${stars(c.stars[k])}</span>`).join('')}</div>
+  <div class="gap"><b>衝突しやすいポイント：${C.n}</b>${C.c}</div>
+  <p style="margin-top:8px"><b>長期的に意識したいこと：</b>${C.l}</p>`;
+}
+function matchList(arr,cap){
+  return `<div class="box"><h3>${cap}</h3>${arr.map(m=>{const t=T[m.j];return `<div class="mini">${im(t.id)}<div><b>${t.e} ${t.nm}</b><small>${m.label}</small></div></div>`;}).join('')}</div>`;
+}
+function resultHTML(){
+  const r=st.res,t=T[r.type.n],D=r.D,c=t.c,u=r.u,sh=r.sh,M=r.M,sub=T[r.sub.n];
+  let h=`<div class="res-hero" style="--c:${c}"><div class="no">LOVE TYPE ${t.id}</div><div class="pic">${im(t.id,'240px')||`<div style="font-size:90px;line-height:210px">${t.e}</div>`}</div>
+  <div class="you">あなたは</div><h1>${t.e} ${t.nm}</h1><span class="kind">${t.kind}</span>
+  <p class="cc">${t.catch}</p><div class="tags">${t.tags.map(x=>`<span>#${x}</span>`).join('')}</div>
+  <p class="sub-type">あなたの中には「${sub.e} ${sub.nm}」の要素もあります</p></div>
+  <p class="note">回答から見える傾向の参考情報です。10問での診断精度は未検証で、性格や相性を断定するものではありません。</p>`;
+  h+=sec('LOVE TYPE 解説',`<p>${t.desc}</p><div class="box" style="margin-top:10px"><h3>付き合った後の特徴</h3><p>${t.after}</p><h3 style="margin-top:10px">相手からどう見られやすいか</h3><p>${t.seen}</p></div>`,c);
+  h+=sec('あなたの恋愛の強み',`<div class="box">${ul(t.str)}</div>`,c);
+  h+=sec('あなたの恋愛のクセ',`<div class="box">${ul(t.habit)}</div><div class="box"><h3>本人が気づきにくいクセ</h3><p>${t.unnoticed}</p></div>`,c);
+
+
+  h+=sec('惹かれやすい相手',`<div class="box"><p>${t.attract}</p></div>`,c);
+  h+=sec('長期的な関係を築きやすい相手',`<div class="box"><p>${t.long}</p></div><p class="soft">惹かれやすい相手と、長く安心できる相手は、必ずしも同じではありません。</p>`,c);
+  h+=sec('恋愛・結婚で注意したいこと',`<div class="box"><h3>苦戦しやすい相手</h3><p>${t.hard}</p><h3 style="margin-top:10px">結婚生活で大切にすること</h3><p>${t.marry}</p><h3 style="margin-top:10px">婚活で気をつけるポイント</h3><p>${t.kon}</p></div><div class="box"><h3>おすすめの最初の一歩</h3><p>${t.act}</p></div>`,c);
+  h+=sec('会話が合う人・違いを補い合える人',`<p class="soft">以下は動物タイプの一般的な特徴を比較した参考情報です。今回質問していないコミュニケーションの軸を個別に測定したものではありません。</p>`+matchList(M.talk,'話が合いやすいタイプ')+matchList(M.val,'価値観が近いタイプ')+matchList(M.comp,'自分と違うけれど、補い合いやすいタイプ')+`<p class="soft">相性は点数で決まるものではありません。「違い」は、知っていれば魅力にもなります。</p>`,c);
+  h+=sec('気になるタイプとの相性をチェック',`<div class="ptable" id="pt">${T.map((x,j)=>`<button data-a="pick" data-j="${j}">${im(x.id)}<span>${AN[j]}</span></button>`).join('')}</div><div id="cmp"><p class="soft">タイプを選ぶと、会話・愛情表現・距離感・スピード・価値観を比べられます。</p></div>`,c);
+  h+=sec('イベントで使えるトークカード',`<div class="namecard" style="--c:${c}"><div class="big">私は${t.e} ${t.nm}</div><small>${t.tags.map(x=>'#'+x).join(' ')}</small><small>話しかけやすいのは：${M.talk.map(m=>T[m.j].e+T[m.j].nm).join('、')}</small></div><p class="soft">名札やプロフィールに書いたり、会場で「私、${t.nm}でした！あなたは？」と話しかけるきっかけに使えます。</p>`,c);
+  h+=shichuHTML(sh,c);
+  h+=actionHTML(r);
+  h+=consultationHTML();
+  h+=sec('LINE・Instagramで共有',`<a class="btn line" target="_blank" rel="noopener" href="${lineHref(resText(t))}">結果をLINEで送る</a><a class="btn ghost small" target="_blank" rel="noopener" href="${lineHref(toolText())}">診断そのものを友だちに送る</a><button class="btn ghost small" data-a="copyres">結果の文章をコピー</button><button class="btn ghost small" data-a="copyurl">結果URLをコピー</button><button class="btn" data-a="instagram">Instagramでシェア</button><p class="soft">ストーリーズ用画像を作成します。Instagramへ自動投稿はしません。</p><div id="story-output" aria-live="polite"></div>`);
+  h+=officialLineHTML();
+  h+=serviceLink();
+  h+=`<button class="btn ghost small" style="margin-top:24px" data-a="retry">もう一度診断する</button><p class="foot">unic LOVE TYPE 12 ／ 恋をもっと、あなたらしく。<br>※本診断は心理検査・医学的診断ではなく、自己理解のためのエンターテインメントです。</p>`;
+  return h;
+}
+
+function compute(){
+  const D=calcD(st.ans), u=featOf(D), sh=calcShichu(st.birth);
+  const rank=matchType(u.map(v=>clamp(50+(v-50)*1.2,0,100)),null); // 5段階回答は中央に寄りやすいため1.2倍に伸ばして照合
+  const S=calcActions(D), pk=pickActions(S);
+  return {D,u:T[rank[0].n].p,sh,type:rank[0],sub:rank[1],scores:S,primary:pk.primary,second:pk.second,recommendation:recommendation(st.ans),gaps:[],M:topMatches(T[rank[0].n].p)};
+}
+function render(){
+  const a=app(); let h='';
+  if(st.screen==='intro') h=intro();
+  else if(st.screen==='quiz') h=quiz();
+  else if(st.screen==='birth') h=birthForm();
+  else if(st.screen==='loading') h=loading();
+  else if(st.screen==='shared') h=sharedHTML();
+  else h=resultHTML();
+  a.innerHTML=h;
+  try{window.scrollTo(0,0);}catch(e){}
+}
+function finish(){
+  st.screen='loading';render();
+  setTimeout(()=>{st.res=compute();st.screen='result';render();},1400);
+}
+function onClick(e){
+  const b=e.target.closest('button,a'); if(!b) return;
+  if(b.dataset.s){
+    if(lock) return; lock=true;
+    const qi=ORDER[st.pos]; st.ans[qi]=+b.dataset.s;
+    [...b.parentNode.children].forEach(x=>x.classList.toggle('on',x===b));
+    setTimeout(()=>{ lock=false; if(st.pos<ORDER.length-1){st.pos++;render();} else {finish();} },170);
+    return;
+  }
+  const a=b.dataset.a; if(!a) return;
+  if(a==='start'){history.replaceState(null,'',baseUrl());st.screen='birth';st.pos=0;st.ans=[];st.res=null;render();}
+  else if(a==='back'){if(st.pos>0){st.pos--;render();}}
+  else if(a==='go'){
+    const d=document.getElementById('bd').value, tm=document.getElementById('bt').value, nt=document.getElementById('bn').checked;
+    const error=validateBirth(d);document.getElementById('birth-error').textContent=error;document.getElementById('bd').setAttribute('aria-invalid',String(!!error));if(error){document.getElementById('bd').focus();return;}
+    if(!nt&&tm&&!/^([01]\d|2[0-3]):[0-5]\d$/.test(tm)){document.getElementById('birth-error').textContent='出生時刻をご確認ください。';return;}
+    st.birth={date:d,time:nt?'':tm,noTime:nt||!tm};st.screen='quiz';render();
+  }
+  else if(a==='addbirth'){st.screen='birth';render();}
+  else if(a==='retry'){history.replaceState(null,'',baseUrl());st.screen='intro';st.pos=0;st.ans=[];st.birth=null;st.res=null;render();}
+  else if(a==='copytool') copy(toolText());
+  else if(a==='copyurl') copy(resultUrl());
+  else if(a==='instagram') makeStory().catch(()=>toast('画像を作成できませんでした。もう一度お試しください。'));
+  else if(a==='copyres') copy(resText(T[st.res.type.n]));
+  else if(a==='pick'){
+    const j=+b.dataset.j;
+    document.querySelectorAll('#pt button').forEach(x=>x.classList.toggle('on',x===b));
+    document.getElementById('cmp').innerHTML=compatPanel(st.res.u,j);
+  }
+}
+
+function serviceLink(){return `<a class="btn" style="margin-top:24px" href="https://quiet-pasca-d4a0c0.netlify.app/" target="_blank" rel="noopener">unicのサービスを詳しく見る</a>`;}
+function parseShared(search){
+  const p=new URLSearchParams(search);if(!p.has('type')&&!p.has('sub'))return null;
+  if(p.getAll('type').length!==1||p.getAll('sub').length!==1)return {invalid:true};
+  const type=T.findIndex(t=>t.id===p.get('type')),sub=T.findIndex(t=>t.id===p.get('sub'));
+  return type<0||sub<0||type===sub?{invalid:true}:{type,sub};
+}
+function sharedHTML(){
+  const r=st.shared;
+  if(r.invalid)return `<h1>共有リンクを確認してください</h1><p>タイプIDが不正、または未対応です。ご自身の診断を始められます。</p><button class="btn" data-a="start">自分も診断する</button>`;
+  const t=T[r.type],sub=T[r.sub];
+  return `<p class="note">共有された結果です。あなた自身を診断した結果ではありません。</p><div class="res-hero" style="--c:${t.c}"><div class="pic">${im(t.id,'240px')}</div><h1>${t.e} ${t.nm}</h1><p>${t.catch}</p><p class="sub-type">サブタイプ：${sub.e} ${sub.nm}</p></div>`+
+  sec('LOVE TYPE 解説',`<p>${t.desc}</p><p>${t.after}</p>`)+sec('恋愛の強み',ul(t.str))+sec('恋愛のクセ・注意点',ul(t.habit)+`<p>${t.unnoticed}</p><p>${t.hard}</p>`)+sec('相性のヒント',`<p>${t.long}</p><p>${t.marry}</p>`)+sec('サブタイプの解説',`<h3>${sub.nm}</h3><p>${sub.desc}</p>`)+
+  `<p class="note">タイプ別の一般的な解説です。送信者の生年月日・回答・個人的な鑑定やおすすめは共有していません。</p><button class="btn" style="margin-top:20px" data-a="start">自分も診断する</button>`+serviceLink();
+}
+
+if(typeof document!=='undefined'&&document.getElementById('app')){
+  st.shared=parseShared(location.search);if(st.shared)st.screen='shared';
+  document.addEventListener('change',e=>{if(e.target.id==='bn'){const t=document.getElementById('bt');t.disabled=e.target.checked;if(t.disabled)t.value='';}});
+  document.addEventListener('click',onClick);
+  render();
+}
+
+</script><script src="story.js"></script></body></html>
