@@ -10,7 +10,7 @@ async function makeStory(){
   ctx.fillStyle='#FFF8F1';ctx.fillRect(0,0,1080,1920);
   ctx.fillStyle=type.c;ctx.globalAlpha=.2;ctx.beginPath();ctx.arc(970,80,420,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(50,1750,360,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
   ctx.fillStyle='#2B2430';ctx.textAlign='center';ctx.font='bold 74px sans-serif';ctx.fillText('unic MEET',540,170);
-  ctx.font='bold 32px sans-serif';ctx.fillText('婚活タイプ診断',540,232);
+  ctx.font='bold 32px sans-serif';ctx.fillText('恋愛・婚活タイプ診断',540,232);
   ctx.fillStyle='#fff';ctx.beginPath();ctx.roundRect(90,300,900,1030,64);ctx.fill();
   // Draw the full, individually generated 1254px illustration without cropping.
   const ratio=Math.min(640/img.naturalWidth,670/img.naturalHeight),w=img.naturalWidth*ratio,h=img.naturalHeight*ratio;
