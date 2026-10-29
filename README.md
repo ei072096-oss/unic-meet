@@ -13,7 +13,7 @@
 - 12タイプの元のキャラに近い個別画像と、実装済み四柱推命を維持。
 
 ## 必須設定
-site-config.js のBOOKING_URLにZoom無料診断のHTTPS予約URLを設定してください。LINE受付の場合はLINE_OA_URLへ既存公式LINEの友だち追加URLを設定。予約URLを優先します。両方未設定の場合は受付ボタンが準備中です。COACH_CREDENTIALは将来用で、現在の画面には表示しません。
+site-config.js のBOOKING_URLにZoom無料診断のHTTPS予約URLを設定してください。LINE受付の場合はLINE_OA_URLへ既存公式LINEの友だち追加URLを設定。予約URLを優先します。両方未設定の場合は受付ボタンが準備中です。現在はユーザー指定の既存公式LINE https://lin.ee/wYDO7PH を設定済みです。COACH_CREDENTIALは将来用で、現在の画面には表示しません。
 
 ## 起動・検証
 既存の/workspace/unic-meetを使用。隔離済みのため明示依頼なしにworktreeは作成しません。静的サイトでビルド・依存導入は不要です。
