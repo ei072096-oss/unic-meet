@@ -20,11 +20,11 @@ st.ans=testData.examples[0].slice();const original=compute();
 for(let timing=1;timing<=5;timing++)for(let concern=1;concern<=5;concern++){
  st.ans[36]=timing;st.ans[37]=concern;const r=compute();
  if(r.type.n!==original.type.n||r.sub.n!==original.sub.n)throw Error('service answers influence animal');
- const html=actionHTML(r);if((timing<=2)!==html.includes('結婚相談所という選択肢'))throw Error('marriage targeting');
+ const html=actionHTML(r);if(/27,000|27000|1,980|4,980|エステ|結婚相談所/.test(html))throw Error('direct paid/other service targeting');
 }
 st.birth={date:'1980-01-01',time:'12:34',noTime:false};if(compute().type.n!==original.type.n||!compute().sh.day)throw Error('birthday affects animal');
 st.ans[37]=1;const a=compute();st.ans[37]=3;const b=compute();if(a.type.n!==b.type.n||a.recommendation.main===b.recommendation.main)throw Error('personal advice');
 if(safeHttps('javascript:alert(1)')||safeHttps('http://example.com'))throw Error('unsafe config URL');
-if(!consultationHTML().includes('disabled')||!officialLineHTML().includes('disabled'))throw Error('missing URL handling');
+if(!consultationHTML().includes('disabled'))throw Error('missing URL handling');
 `,c);
 fs.writeFileSync(__dirname+'/examples.json',JSON.stringify(c.testData.examples));console.log('PASS: date/leap-year checks; all 12 types reachable; share URLs/privacy/invalid IDs; 25 service combinations independent from types; birth independence; personalized advice; missing and unsafe configuration URLs.');

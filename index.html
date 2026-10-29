@@ -4,8 +4,8 @@
      like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=bcebbb29-1c5e-48c2-b967-ad1c6b567d90
      Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>unic LOVE TYPE 12｜恋愛タイプ診断</title>
-<meta name="description" content="恋をもっと、あなたらしく。自分を知って、相手を知って、次の一歩まで分かる恋愛診断。">
+<title>あなたの恋、どんなタイプ？｜unic MEET 恋愛タイプ診断</title>
+<meta name="description" content="あなたの恋愛タイプと相性を知り、自分に合う恋の進め方を見つける10問の無料診断。結果をもとにLINEで相談できます。">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
 <style>:root{--bg:#FFF8F1;--card:#FFFFFF;--ink:#2B2430;--sub:#6F6577;--line:#EFE3D8;--pink:#FF5C86;--line-green:#06C755;color-scheme:light dark}
@@ -139,7 +139,6 @@ a{color:inherit}
 .ptable .animal{width:58px;height:58px;max-width:100%}
 .thumbs>div{aspect-ratio:1/1}
 button:disabled{opacity:.55;cursor:default;box-shadow:none}
-#story-output img{display:block;width:100%;max-width:270px;height:auto;margin:16px auto;border-radius:16px}
 .ans button,.btn{min-height:48px}
 /* Quiet, editorial service presentation */
 .form select,.form input[type=text]{width:100%;font:inherit;padding:12px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);margin-top:6px}
@@ -155,6 +154,7 @@ button:disabled{opacity:.55;cursor:default;box-shadow:none}
 .consult-card{padding:28px 22px;background:#f1e9e2;color:#352f2b;border-radius:24px}.consult-card h3{font-size:23px;margin:14px 0 18px;line-height:1.6}.consult-card p{line-height:1.9}.consult-card .btn{background:#38332f;color:#fff;box-shadow:none;margin-top:22px;font-size:14px}
 .calendar-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px 18px}.birth-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:20px 0}.birth-pillars>div{text-align:center;background:var(--bg);padding:13px 2px;border-radius:12px}.birth-pillars small{display:block;font-size:11px;color:var(--sub)}.birth-pillars strong{display:block;font-size:19px;line-height:1.4;overflow-wrap:anywhere;margin-top:6px}.stem-reading{display:flex;gap:15px;align-items:center;border-top:1px solid var(--line);padding:22px 0 16px}.stem-sign{font-family:serif;font-size:48px;color:#ab806c}.stem-reading h3{font-size:15px;line-height:1.8}.calendar-details{font-size:12px;border-top:1px solid var(--line);margin-top:18px;padding-top:14px}.calendar-details summary{cursor:pointer;color:var(--sub)}.calendar-details p{font-size:12px!important;line-height:1.9;margin-top:10px}.boundary-note{font-size:12px!important;background:var(--bg);border-radius:10px;padding:12px}
 .action{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 22px}.action h3{font-size:21px;line-height:1.6;margin-bottom:12px}.action p{font-size:14px;line-height:1.9;color:var(--sub)}
+.line-steps{padding-left:22px;margin:22px 0 16px;display:grid;gap:10px;font-size:13px;line-height:1.9}.unic-about{border-top:1px solid var(--line);padding-top:28px}.unic-about h2{border:0;padding:0;font-size:22px;margin:12px 0}.unic-about>p:not(.eyebrow){font-size:14px;color:var(--sub);line-height:1.95}
 </style></head>
 <body><div id="app"></div>
 <script src="site-config.js"></script>
@@ -164,7 +164,7 @@ button:disabled{opacity:.55;cursor:default;box-shadow:none}
 /* ===== 設定 ===== */
 const CONFIG={
   SHARE_URL:'',            // 公開後のURLを入れるとLINE共有にそのURLが入ります（空なら現在のURL）
-  LINE_OA_URL:'',          // LINE公式アカウントの友だち追加URL（例: https://lin.ee/xxxx）。空ならボタン非表示
+  LINE_OA_URL:'',          // LINE公式アカウントの友だち追加URL（例: https://lin.ee/xxxx）。空なら準備中の無効ボタン
   LINE_OA_LABEL:'unicの公式LINEに登録する',
   BOOKING_URL:'',
   COACH_CREDENTIAL:'',
@@ -613,7 +613,7 @@ function resultUrl(){
   const u=new URL(baseUrl());u.searchParams.set('type',T[st.res.type.n].id);u.searchParams.set('sub',T[st.res.sub.n].id);return u.href;
 }
 function lineHref(text){return 'https://line.me/R/msg/text/?'+encodeURIComponent(text);}
-function toolText(){return 'unic LOVE TYPE 12｜恋をもっと、あなたらしく。\n10問でわかる、あなたの恋愛タイプ診断🐰🦁🐺\n自分を知って、相手を知って、次の一歩まで。\n'+baseUrl();}
+function toolText(){return 'あなたの恋、どんなタイプ？｜unic MEET\n恋愛攻略のヒントが見つかる、10問の無料タイプ診断🐰🦁🐺\n恋愛傾向と相性を知って、自分に合う恋の進め方を見つけよう。\n'+baseUrl();}
 function resText(t){return `私は「${t.e} ${t.nm}」でした！\n${t.catch}\nサブタイプ：${T[st.res.sub.n].nm}\n共有された恋愛タイプの解説を見る👇\n${resultUrl()}`;}
 function toast(m){const d=document.createElement('div');d.className='toast';d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),1800);}
 function copy(text){
@@ -625,11 +625,11 @@ function copy(text){
 
 function intro(){
   return `<div class="hero">${IMGS.logo?`<img class="logo" src="${IMGS.logo}" alt="unic LOVE TYPE 12">`:'<h1>unic LOVE TYPE 12</h1>'}
-  <h1 class="catch">恋をもっと、<br>あなたらしく。</h1>
-  <p class="lead">自分を知る → 自分に合う相手を知る<br>→ 今やるべき一歩まで、まとめてわかる恋愛診断です。</p>
+  <h1 class="catch">あなたの恋、<br>どんなタイプ？</h1>
+  <p class="lead">恋愛攻略のヒントが見つかる、10問の無料診断。<br>恋愛傾向と相性を知って、<br>あなたに合う恋の進め方を見つけよう。</p>
   <div class="thumbs">${T.map(t=>`<div style="--c:${t.c}">${im(t.id)}</div>`).join('')}</div>
   <div class="meta"><span>全10問・約3分＋生年月日入力</span><span>無料</span><span>男女どちらもOK</span></div>
-  <button class="btn" data-a="start">診断をはじめる</button>
+  <button class="btn" data-a="start">自分の恋愛タイプを診断する</button>
   <a class="btn line" target="_blank" rel="noopener" href="${lineHref(toolText())}">この診断をLINEで送る</a>
   <button class="btn ghost small" data-a="copytool">リンク文をコピー</button>
   <p class="note">※この診断は、恋愛傾向を楽しく知るためのオリジナルコンテンツです。心理学的に検証された心理検査や、医学的・科学的診断ではありません。占い（四柱推命）も、未来や相性を断定するものではなく、自己理解のヒントとして使います。</p></div>`;
@@ -689,15 +689,15 @@ function recommendation(ans){
 }
 function actionHTML(r){
   const rec=r.recommendation;
-  const advice={coaching:['恋愛パターンを整理する時間','気になっているパターンを、出来事・気持ち・行動に分けて振り返ってみましょう。'],confidence:['あなたの魅力を言葉にすること','得意なことや大切にしている価値観を、ひとつずつ書き出すところから始めてみませんか。'],event:['新しい出会いへの小さな一歩','安心して参加できるイベントを一つ探すなど、無理のない範囲で出会いを増やしてみましょう。'],marriage:['結婚に向けた具体的な計画','希望時期に向けて、出会い方や活動ペースを整理してみましょう。まずは無料相談で状況を聞かせてください。'],consult:['自分に合った次の一歩を見つけること','急いで結論を出さず、今の気持ちを整理することから始めてみましょう。']}[rec.main];
+  const advice={coaching:['恋愛パターンを整理する時間','気になっているパターンを、出来事・気持ち・行動に分けて振り返ってみましょう。'],confidence:['あなたの魅力を言葉にすること','得意なことや大切にしている価値観を、ひとつずつ書き出すところから始めてみませんか。'],event:['新しい出会いへの小さな一歩','安心して参加できるイベントを一つ探すなど、無理のない範囲で出会いを増やしてみましょう。'],marriage:['結婚に向けた具体的な計画','希望時期に向けて、出会い方や活動ペースを整理してみましょう。無理なく進められる順番を考えるところから始めてみましょう。'],consult:['自分に合った次の一歩を見つけること','急いで結論を出さず、今の気持ちを整理することから始めてみましょう。']}[rec.main];
   const notes={coaching:'恋愛パターンのお悩みを選んだ回答からの提案です。',confidence:'自信や魅力の伝え方のお悩みを選んだ回答からの提案です。',event:'出会いを増やしたいという回答からの提案です。',marriage:'結婚希望時期と進め方のお悩みを選んだ回答からの提案です。',consult:'今回の希望時期・お悩みの回答を整理するための提案です。'};
-  return sec('今のあなたに必要なのは',`<div class="action"><h3>${advice[0]}</h3><p>${advice[1]}</p></div><p class="soft">${notes[rec.main]}性格や悩みを断定するものではありません。</p>`)+
-  sec('あなたの一歩に、unicを。',`<div class="service-intro"><p class="eyebrow">A LITTLE SUPPORT, YOUR WAY</p><h3>ひとりで答えを<br>出さなくて、大丈夫。</h3><p>まずは、今の気持ちを話すところから。<br>あなたのペースに合うサポートを一緒に探します。</p></div><div class="service-grid">${serviceCard('01','TALK & REFLECT','恋愛コーチング','自分の恋愛を、もっと心地よく。','恋愛のパターンや気持ちを整理し、あなたらしく関係を育てるための時間です。',`<div class="service-price">27,000<span>円（税込）</span></div><p class="service-spec">60分 × 3回 ／ 提供予定</p><details><summary>セッションの内容・担当</summary><ol><li>恋愛傾向の理解と課題の整理</li><li>コミュニケーションや行動の改善</li><li>実践の振り返りと今後の行動計画</li></ol><p>担当：御園拓也${CONFIG.COACH_CREDENTIAL?'<br>資格：'+esc(CONFIG.COACH_CREDENTIAL):''}</p></details>`)}${rec.main==='event'?serviceCard('02','MEET SOMEONE','婚活イベント','出会いに、少しのきっかけを。','新しい人と会い、会話を楽しむ時間。無理のない一歩から始めてみませんか。',''):''}${rec.main==='confidence'?serviceCard('02','FEEL LIKE YOU','美容・自分磨き','自分らしい魅力を、少しずつ。','身だしなみや伝え方を整え、あなた自身が気持ちよく過ごせるスタイルを見つけます。',''):''}${rec.marriage?serviceCard(rec.main==='event'||rec.main==='confidence'?'03':'02','THINK ABOUT TOMORROW','結婚相談所という選択肢','ふたりの未来を、具体的に。','1〜2年以内の結婚を希望する方へ。連携する結婚相談所での活動も、無料相談でご相談いただけます。入会は任意です。',''):''}</div><p class="soft">無料相談を受けたあと、ご希望と必要性に応じてご検討いただけます。購入・入会を前提とした診断ではありません。</p>`);
-
+  return sec('今のあなたに必要なのは',`<div class="action"><h3>${advice[0]}</h3><p>${advice[1]}</p></div><p class="soft">${notes[rec.main]}性格や悩みを断定するものではありません。</p>`);
 }
-function serviceCard(no,category,name,title,text,extra){return `<article class="service-card"><div class="service-card-top"><span>${no}</span><p class="eyebrow">${category}</p></div><p class="service-name">${name}</p><h3>${title}</h3><p class="service-description">${text}</p>${extra}</article>`;}
-function consultationHTML(){const url=safeHttps(CONFIG.BOOKING_URL);return sec('あなたが幸せな恋愛・結婚を叶えるために',`<div class="consult-card"><p class="eyebrow">FIRST STEP — 30 MINUTES</p><h3>まずは、話してみませんか。</h3><p>恋愛タイプ診断の結果をもとに、<br>今のあなたに必要なステップを<br>一緒に見つけませんか？</p><p>恋愛や婚活のお悩みを整理し、<br>あなたに合った次の一歩をご提案します。</p><p class="soft">無料Zoom恋愛・婚活相談／30分</p>${url?`<a class="btn" href="${esc(url)}" target="_blank" rel="noopener">無料Zoom恋愛・婚活相談を予約する</a>`:'<button class="btn" disabled>無料Zoom恋愛・婚活相談を予約する</button><p class="soft">予約受付は準備中です。</p>'}</div>`);}
-function officialLineHTML(){const url=safeHttps(CONFIG.LINE_OA_URL);return sec('unicの公式LINE',`<p>恋愛・婚活に役立つ情報を<br>公式LINEで無料配信中！</p>${url?`<a class="btn line" href="${esc(url)}" target="_blank" rel="noopener">unicの公式LINEに登録する</a>`:'<button class="btn line" disabled>unicの公式LINEに登録する</button><p class="soft">登録リンクは準備中です。</p>'}<p class="soft">診断結果の共有とは別の機能です。登録は任意。すでに登録済みの方は再登録不要です。診断結果は登録せずにすべて閲覧できます。</p>`);}
+function consultationHTML(){
+ const t=st.res?T[st.res.type.n]:null,url=safeHttps(CONFIG.LINE_OA_URL);
+ return sec('自分のタイプに合わせて、恋の進め方を考えよう',`<div class="consult-card"><p class="eyebrow">YOUR TYPE, YOUR NEXT STEP</p><h3>${t?esc(t.nm)+'のあなたへ。':'あなたの恋愛タイプをヒントに。'}<br>次の一歩を、一緒に。</h3><p>診断を読んで、思い当たることはありましたか？<br>自分のタイプを知ったら、その傾向に合わせて恋の進め方を考えてみませんか。</p><p>恋愛コーチングの相談では、結果をヒントに、今の気持ちや繰り返しやすい恋愛パターンを整理します。まずはLINEで、気になることをひとこと送ってください。</p>${url?`<a class="btn" data-role="consult-line" href="${esc(url)}" target="_blank" rel="noopener">LINEで診断結果をもとに相談する</a>`:'<button class="btn" data-role="consult-line" disabled>LINEで診断結果をもとに相談する</button><p class="soft">相談用LINEのリンクは準備中です。</p>'}<ol class="line-steps"><li>unicの公式LINEを開く（未登録の方は友だち追加）</li><li>診断結果のスクリーンショットや結果リンクと、気になることを送る</li><li>通話をご希望の場合は、トークで日程を調整する</li></ol><p class="soft">登録済みの方は再登録不要です。年齢などの確認は、必要な場合に通話の日程を決める際に行います。生年月日・出生時刻・回答はLINEへ自動送信しません。</p></div>`);
+}
+function officialLineHTML(){return sec('恋愛コーチング以外のご相談も',`<p>外見や自分磨きなど、ほかに気になることがある方も、公式LINEのトークで相談内容を送ってください。お話を伺ってから、必要なサポートを一緒に考えます。</p><p class="soft">LINE登録の有無にかかわらず、診断結果はすべて閲覧できます。</p>`);}
 function compatPanel(u,j){
   const c=compat(u,j),t=T[j],C=CONF[c.low];
   return `<div class="mini" style="margin-top:12px">${im(t.id)}<div><b>${t.e} ${t.nm}</b><small>${c.label}</small></div></div>
@@ -728,10 +728,10 @@ function resultHTML(){
   h+=shichuHTML(sh,c);
   h+=actionHTML(r);
   h+=consultationHTML();
-  h+=sec('LINE・Instagramで共有',`<a class="btn line" target="_blank" rel="noopener" href="${lineHref(resText(t))}">結果をLINEで送る</a><a class="btn ghost small" target="_blank" rel="noopener" href="${lineHref(toolText())}">診断そのものを友だちに送る</a><button class="btn" data-a="instagram">Instagramでシェア</button><p class="soft">ストーリーズ用画像を作成します。Instagramへ自動投稿はしません。</p><div id="story-output" aria-live="polite"></div>`);
+  h+=sec('友だちに診断結果を送る',`<a class="btn line" target="_blank" rel="noopener" href="${lineHref(resText(t))}">LINEで友だちに結果を送る</a><a class="btn ghost small" target="_blank" rel="noopener" href="${lineHref(toolText())}">診断そのものを友だちに送る</a><p class="soft">送る相手はLINEの画面で選べます。共有するのはタイプ名と一般的な解説・結果リンクです。生年月日や個別の回答は共有しません。</p>`);
   h+=officialLineHTML();
   h+=serviceLink();
-  h+=`<button class="btn ghost small" style="margin-top:24px" data-a="retry">もう一度診断する</button><p class="foot">unic LOVE TYPE 12 ／ 恋をもっと、あなたらしく。<br>※本診断は心理検査・医学的診断ではなく、自己理解のためのエンターテインメントです。</p>`;
+  h+=`<button class="btn ghost small" style="margin-top:24px" data-a="retry">もう一度診断する</button><p class="foot">unic MEET ／ あなたの恋、どんなタイプ？<br>※本診断は心理検査・医学的診断ではなく、自己理解のためのエンターテインメントです。</p>`;
   return h;
 }
 
@@ -778,7 +778,6 @@ function onClick(e){
   else if(a==='addbirth'){st.screen='birth';render();}
   else if(a==='retry'){history.replaceState(null,'',baseUrl());st.screen='intro';st.pos=0;st.ans=[];st.birth=null;st.res=null;render();}
   else if(a==='copytool') copy(toolText());
-  else if(a==='instagram') makeStory().catch(()=>toast('画像を作成できませんでした。もう一度お試しください。'));
   else if(a==='pick'){
     const j=+b.dataset.j;
     document.querySelectorAll('#pt button').forEach(x=>x.classList.toggle('on',x===b));
@@ -786,7 +785,7 @@ function onClick(e){
   }
 }
 
-function serviceLink(){return `<a class="btn" style="margin-top:24px" href="https://quiet-pasca-d4a0c0.netlify.app/" target="_blank" rel="noopener">unicのサービスを詳しく見る</a>`;}
+function serviceLink(){return `<section class="sec unic-about"><p class="eyebrow">ABOUT UNIC MEET</p><h2>恋を、自分らしく進めるために。</h2><p>unic MEETは、恋愛の悩みや「これからどうしたい？」に向き合うきっかけを届けます。タイプ診断を入口に、対話を通してあなたに合う次の一歩を考えます。</p><a class="btn ghost small" style="margin-top:18px" href="https://quiet-pasca-d4a0c0.netlify.app/" target="_blank" rel="noopener">unicのサービスを詳しく見る</a></section>`;}
 function parseShared(search){
   const p=new URLSearchParams(search);if(!p.has('type')&&!p.has('sub'))return null;
   if(p.getAll('type').length!==1||p.getAll('sub').length!==1)return {invalid:true};
@@ -809,4 +808,4 @@ if(typeof document!=='undefined'&&document.getElementById('app')){
   render();
 }
 
-</script><script src="story.js"></script></body></html>
+</script></body></html>

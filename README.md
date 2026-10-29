@@ -1,40 +1,39 @@
-# unic MEET 恋愛タイプ診断
+# unic MEET 恋愛タイプ診断（2026-10-29）
 
-2026-10-28 改訂版。既存のタイプ名・診断の一般解説・10問の判定ロジックを維持し、元のキャラクターに近いポートレートへ調整しました。
+「あなたの恋、どんなタイプ？」を入口に、タイプを知る → 自分に合う恋の進め方を考える → LINEで結果をもとに相談、の流れに変更しました。
 
-## 今回の変更
-- 12種類を元の表情・衣装・顔中心の構図に近づけて再生成。1254×1254px WebP＋384px軽量版。
-- 動物ごとの下のunic MEET表示、イベント用トークカード、結果文章コピー／結果URLコピーボタンを削除。
-- 四柱推命をローカル実装。年柱・月柱・日柱、出生時刻が分かる場合は時柱と、日干の一般的な補足を表示。
-- 出生地のIANAタイムゾーン・夏時間を反映。出生時刻不明の節入り日は年柱・月柱の候補を併記。時柱は推測しない。
-- 診断内のサービス紹介を落ち着いたカードへ整理。
-- ユーザーがデザイン変更を希望したリンク先 https://quiet-pasca-d4a0c0.netlify.app/ はHTTP 403で取得不可のため、その別サイト自体の改修は未着手。
+## 現在の導線
+- 恋愛攻略のヒントを探す10問の無料タイプ診断。8問で動物、残り2問で次の一歩の参考を表示。
+- 結果に27,000円のコーチング料金、エステ・結婚相談所への直接申し込み、Instagram画像生成・OS共有は出しません。
+- 相談の名称・体験価格は未決定のため、無料Zoom・1,980円・4,980円・戦略ミーティングなどを確定した案内として表示しません。
+- 相談は既存の公式LINEから。登録済みの方は再登録不要。結果スクショや結果リンクと、気になることを自分で送ってもらう運用。
+- 年齢などの追加確認は必要な通話調整時に行う案内。新しい事前アンケートは追加しません。
+- 診断結果の閲覧はLINE登録不要。生年月日・出生時刻・回答はブラウザ内のみで処理し、自動転送・保存しません。
+- 友達に結果をLINEで送る機能を維持。URLはタイプ／サブタイプのみ。紹介とサービスサイトへのボタンを下部に掲載。
+- 12タイプの元のキャラに近い個別画像と、実装済み四柱推命を維持。
 
-## 四柱推命の計算基準
-lunar-javascript 1.7.7（MIT）の節入り時刻を出生地の瞬間へ換算して年・月柱を計算。日柱は出生地の民間時の0時切り替え。時柱も出生地の時計を使い、23時台の時干は当日の日干から算出。真太陽時補正なし。対応生年1900〜2099年（入力は未来日不可）。流派によって結果が異なることを結果の計算基準に表示しています。
-参考サイト https://aisare-fourpillars.info/ は環境からHTTP 403で取得できず、内容の転載・API利用・同サイトとの照合は行っていません。実際の暦計算から結果を出し、架空の命式を表示しません。
-入力はブラウザ内だけで処理し、サーバー送信・永続保存・共有URLへの記載なし。
+## 必須設定
+site-config.js の LINE_OA_URL に、既存の婚活イベント用公式LINEのHTTPS友だち追加URLを設定してください。現在は未設定で、相談ボタンは準備中です。
+BOOKING_URL と COACH_CREDENTIAL は将来用に保持していますが、現在の診断画面には使用しません。
 
-## 起動と検証
-既存の /workspace/unic-meet を使用。明示依頼なしでworktreeを作成しません。ビルド・依存導入は不要。配信に必要な暦ライブラリはvendor/に同梱しています。
+## 起動・検証
+既存の/workspace/unic-meetを使用。隔離済みのため明示依頼なしにworktreeは作成しません。静的サイトでビルド・依存導入は不要です。
 
 ```
-python -m http.server 8766 --bind 127.0.0.1
+python -m http.server 8767 --bind 127.0.0.1
 node tests/logic.cjs
 node tests/calendar.cjs
 node tests/browser.cjs
 node tests/calendar-browser.cjs
-node tests/share.cjs
 node tests/assets.cjs
 ```
-ブラウザテストは起動済みサーバー、環境付属Playwrightと/usr/bin/chromiumを使用します。実機・Safari・LINE/Instagramアプリでの検証は別途必要です。
+ブラウザテストは起動済みサーバー、環境付属Playwright・/usr/bin/chromiumを使用します。実機iPhone/AndroidやLINEアプリ操作を保証するものではありません。
 
-## サイト設定
-site-config.js の BOOKING_URL（無料Zoom予約）、LINE_OA_URL（既存公式LINE）、COACH_CREDENTIAL（確認済み資格名）を設定できます。未設定の予約・登録ボタンは準備中の無効表示。資格名は未設定なら非表示です。
+## 四柱推命
+lunar-javascript 1.7.7（MIT）を同梱。年・月は節入りの瞬間、日柱は出生地の日界0時、時柱は出生地の時計の時刻（23時台も当日の日干使用）、真太陽時補正なし。IANAタイムゾーン・夏時間を換算。時刻不明の節入り日は候補併記、時柱は推測しません。流派差と境界の計算モデル差を結果に表示しています。
+41 upstream tests、120独立JDN日柱、48独立天文節入り（最大差24.014秒）を検証。THIRD-PARTY.md参照。
 
-## 配信対象
-index.html、site-config.js、story.js、four-pillars.js、vendor/、assets/logo.jpg、assets/type-*.webpを同じルートから配信。
-前回の更新用ZIPには新しいfour-pillars.jsとvendor/が含まれないため、今回の最新版を使用してください。
-公開前に既存NetlifyのDeployを控え、内容確認後、既存サイトへアップロードしてください。GitHubへの保存とNetlifyへの公開は別です。
-
-素材対応：assets-manifest.json／ASSETS-NEEDED.md。改修・テスト詳細：改修報告.md。ライセンス：THIRD-PARTY.md。
+## 配信
+index.html、site-config.js、four-pillars.js、vendor/、assets/logo.jpg、assets/type-*.webpが必要です。story.jsは廃止しました。
+GitHubの最新版ZIPを使い、内容確認後に既存Netlifyサイトへ反映してください。GitHub保存とNetlify公開は別です。
+リンク先quiet-pasca-d4a0c0.netlify.appのサービス紹介サイト自体は別プロジェクトで、既存コードの取得がHTTP 403で未完了です。この改修ではその価格・名称を変更していません。
