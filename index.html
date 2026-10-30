@@ -172,6 +172,13 @@ button:disabled{opacity:.55;cursor:default;box-shadow:none}
 @media(max-width:350px){.consult-card,.unic-about{padding-left:14px;padding-right:14px}.zoom-art{gap:10px;padding-left:7px;padding-right:7px}.zoom-character{flex-basis:132px;width:132px;height:132px}.zoom-speech strong{font-size:18px}.consult-card .btn{font-size:15px}.unic-about h2{font-size:22px}.service-cta{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.unic-brand-link{transition:none}}
 .consult-card .cta-q,.consult-card .cta-verb{display:block}.consult-card .soft,.consult-card .eyebrow{color:#70606c}.consult-card .line-steps{color:#4f414a}
+/* Keep the existing wordmark; render its updated tagline as sharp text. */
+.brand-lockup{display:block;width:210px;max-width:100%;margin:6px auto 0;text-align:center;flex:none}
+.brand-wordmark{display:block;width:100%;aspect-ratio:320/146;overflow:hidden;border-radius:14px 14px 0 0}
+.brand-wordmark img{display:block;width:100%!important;height:auto!important;max-width:none!important;border-radius:0!important}
+.brand-tagline{display:block;margin-top:2px;font-size:10px;font-weight:700;line-height:1.5;letter-spacing:.01em;color:#292327;white-space:nowrap}
+.unic-brand-link .brand-lockup{width:160px;max-width:calc(100% - 48px);margin:0;flex:0 1 160px;min-width:0}
+.unic-brand-link .brand-tagline{font-size:7.5px}
 </style></head>
 <body><div id="app"></div>
 <script src="site-config.js"></script>
@@ -640,12 +647,13 @@ function copy(text){
   function fb(){const a=document.createElement('textarea');a.value=text;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok();}catch(e){toast('コピーできませんでした');}a.remove();}
 }
 
+function brandLogo(){return `<span class="brand-lockup" role="img" aria-label="unic LOVE TYPE 12 自分を知ると、もっとうまくいく。"><span class="brand-wordmark"><img src="${IMGS.logo}" width="320" height="173" alt="" aria-hidden="true"></span><span class="brand-tagline">自分を知ると、もっとうまくいく。</span></span>`;}
 function intro(){
-  return `<div class="hero">${IMGS.logo?`<img class="logo" src="${IMGS.logo}" alt="unic LOVE TYPE 12">`:'<h1>unic LOVE TYPE 12</h1>'}
+  return `<div class="hero">${brandLogo()}
   <h1 class="catch">あなたの恋愛・婚活は<br>何タイプ？</h1>
   <p class="lead">自分に合う恋愛・婚活の進め方を見つける、10問の無料診断。<br>恋愛傾向・相性・大切にしたい価値観から、<br>これからの婚活のヒントを見つけよう。</p>
   <div class="thumbs">${T.map(t=>`<div style="--c:${t.c}">${im(t.id)}</div>`).join('')}</div>
-  <div class="meta"><span>全10問・約3分＋生年月日入力</span><span>無料</span><span>男女どちらもOK</span></div>
+  <div class="meta"><span>1分で完了</span><span>無料</span><span>男女どちらもOK</span></div>
   <button class="btn" data-a="start">自分の恋愛・婚活タイプを診断する</button>
   <a class="btn line" target="_blank" rel="noopener" href="${lineHref(toolText())}">この診断をLINEで送る</a>
   <button class="btn ghost small" data-a="copytool">リンク文をコピー</button>
@@ -801,7 +809,7 @@ function onClick(e){
   }
 }
 
-function serviceLink(){return `<section class="sec unic-about"><span class="about-tag">あなたらしい一歩を応援</span><a class="unic-brand-link" data-role="service-logo" href="https://quiet-pasca-d4a0c0.netlify.app/" target="_blank" rel="noopener" aria-label="unic MEETのサービス紹介を開く"><img src="${IMGS.logo}" width="320" height="173" alt="unic MEET"><span class="brand-open" aria-hidden="true">↗</span></a><h2>恋愛も、婚活も。<br>あなたらしい一歩を。</h2><p>unic MEETは、恋愛・婚活の悩みや「これからどう進めたい？」に向き合うきっかけを届けます。あなたの一歩を支えるサービスを、紹介ページでご覧ください。</p><a class="btn service-cta" data-role="service-cta" href="https://quiet-pasca-d4a0c0.netlify.app/" target="_blank" rel="noopener"><span>unicのサービスを詳しく見る</span><b aria-hidden="true">→</b></a></section>`;}
+function serviceLink(){return `<section class="sec unic-about"><span class="about-tag">あなたらしい一歩を応援</span><a class="unic-brand-link" data-role="service-logo" href="https://quiet-pasca-d4a0c0.netlify.app/" target="_blank" rel="noopener" aria-label="unic MEETのサービス紹介を開く">${brandLogo()}<span class="brand-open" aria-hidden="true">↗</span></a><h2>恋愛も、婚活も。<br>あなたらしい一歩を。</h2><p>unic MEETは、恋愛・婚活の悩みや「これからどう進めたい？」に向き合うきっかけを届けます。あなたの一歩を支えるサービスを、紹介ページでご覧ください。</p><a class="btn service-cta" data-role="service-cta" href="https://quiet-pasca-d4a0c0.netlify.app/" target="_blank" rel="noopener"><span>unicのサービスを詳しく見る</span><b aria-hidden="true">→</b></a></section>`;}
 function parseShared(search){
   const p=new URLSearchParams(search);if(!p.has('type')&&!p.has('sub'))return null;
   if(p.getAll('type').length!==1||p.getAll('sub').length!==1)return {invalid:true};
