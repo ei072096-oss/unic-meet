@@ -7,10 +7,12 @@ async function makeStory(){
   const ctx=canvas.getContext('2d');if(!ctx)throw Error('Canvas unavailable');
   if(document.fonts)await document.fonts.ready;
   const img=new Image();img.src=IMGS[type.id];await img.decode();
+  const logo=new Image();logo.src=IMGS.serviceLogo;await logo.decode();
   ctx.fillStyle='#FFF8F1';ctx.fillRect(0,0,1080,1920);
   ctx.fillStyle=type.c;ctx.globalAlpha=.2;ctx.beginPath();ctx.arc(970,80,420,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(50,1750,360,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
-  ctx.fillStyle='#2B2430';ctx.textAlign='center';ctx.font='bold 74px sans-serif';ctx.fillText('unic MEET',540,170);
-  ctx.font='bold 32px sans-serif';ctx.fillText('恋愛・婚活タイプ診断',540,232);
+  ctx.textAlign='center';
+  const lr=Math.min(900/logo.naturalWidth,210/logo.naturalHeight),lw=logo.naturalWidth*lr,lh=logo.naturalHeight*lr;ctx.drawImage(logo,(1080-lw)/2,35,lw,lh);
+  ctx.fillStyle='#2B2430';ctx.font='bold 30px sans-serif';ctx.fillText('恋愛・婚活タイプ診断',540,270);
   ctx.fillStyle='#fff';ctx.beginPath();ctx.roundRect(90,300,900,1030,64);ctx.fill();
   // Draw the full, individually generated 1254px illustration without cropping.
   const ratio=Math.min(640/img.naturalWidth,670/img.naturalHeight),w=img.naturalWidth*ratio,h=img.naturalHeight*ratio;

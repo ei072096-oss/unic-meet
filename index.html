@@ -179,6 +179,17 @@ button:disabled{opacity:.55;cursor:default;box-shadow:none}
 .brand-tagline{display:block;margin-top:2px;font-size:10px;font-weight:700;line-height:1.5;letter-spacing:.01em;color:#292327;white-space:nowrap}
 .unic-brand-link .brand-lockup{width:160px;max-width:calc(100% - 48px);margin:0;flex:0 1 160px;min-width:0}
 .unic-brand-link .brand-tagline{font-size:7.5px}
+/* Clear visual emphasis for the two next-step messages. */
+.next-action-section{padding:26px 20px;border:2px solid #d8588b;border-radius:28px;background:linear-gradient(145deg,#fff0f4,#fff8e6 60%,#f5ebff);box-shadow:0 10px 28px #b035631a;color:#392a33}
+.next-action-label{display:inline-block;background:#b62765;color:white!important;border-radius:99px;padding:6px 13px;font-size:12px!important;font-weight:700;letter-spacing:.05em;margin-bottom:14px!important}
+.next-action-section>h2{padding:0;border:0;font-size:29px;line-height:1.55;color:#a5265e;letter-spacing:.015em;margin-bottom:18px;text-wrap:balance}
+.next-action-section .action{padding:22px 18px;border:0;border-radius:20px;background:#fffdfc;box-shadow:0 4px 0 #eed1dc}
+.next-action-section .action h3{font-size:27px;line-height:1.6;color:#562d47;font-weight:900;margin:0 0 16px;text-wrap:balance}
+.next-action-section .action p{font-size:15px;line-height:1.95;color:#58454f}.next-action-section>.soft{font-size:12px;line-height:1.9;color:#79616f;margin-top:18px}
+.zoom-next-title{text-align:center;margin:4px 0 22px;line-height:1.45;letter-spacing:.025em}.zoom-next-title>span{display:block;font-size:25px;font-weight:800;color:#63324b}.zoom-next-title>strong{display:inline-block;font-size:40px;font-weight:900;color:#ad215b;background:linear-gradient(transparent 72%,#ffe09a 72%,#ffe09a 94%,transparent 94%);padding:0 4px 5px;text-shadow:0 2px 0 white}
+.consult-card h3{font-size:24px;line-height:1.6}.zoom-speech strong{font-size:21px}.unic-brand-link .service-logo-image{display:block;width:100%;max-width:100%;height:auto;border-radius:8px}.unic-brand-link.service-brand-panel{display:block;padding:18px 12px;max-width:100%;min-height:100px;background:white}.unic-brand-link.service-brand-panel .brand-open{position:absolute;right:9px;bottom:9px;width:28px;height:28px;min-width:28px;font-size:18px}.unic-brand-link{position:relative}
+@media(max-width:350px){.next-action-section{padding:22px 15px}.next-action-section>h2{font-size:26px}.next-action-section .action{padding:20px 15px}.next-action-section .action h3{font-size:24px}.zoom-next-title>span{font-size:23px}.zoom-next-title>strong{font-size:34px}}
+.next-action-section>h2>span,.next-action-section>h2>strong{display:block}.next-action-section>h2>span{font-size:27px}.next-action-section>h2>strong{font-size:34px;line-height:1.5}.zoom-banner{justify-content:flex-end}
 </style></head>
 <body><div id="app"></div>
 <script src="site-config.js"></script>
@@ -617,7 +628,7 @@ function topMatches(u){
 }
 
 /* ===== UI ===== */
-const IMGS={"01": "assets/type-01.webp", "02": "assets/type-02.webp", "03": "assets/type-03.webp", "04": "assets/type-04.webp", "05": "assets/type-05.webp", "06": "assets/type-06.webp", "07": "assets/type-07.webp", "08": "assets/type-08.webp", "09": "assets/type-09.webp", "10": "assets/type-10.webp", "11": "assets/type-11.webp", "12": "assets/type-12.webp", "logo": "assets/logo.jpg"};
+const IMGS={"01": "assets/type-01.webp", "02": "assets/type-02.webp", "03": "assets/type-03.webp", "04": "assets/type-04.webp", "05": "assets/type-05.webp", "06": "assets/type-06.webp", "07": "assets/type-07.webp", "08": "assets/type-08.webp", "09": "assets/type-09.webp", "10": "assets/type-10.webp", "11": "assets/type-11.webp", "12": "assets/type-12.webp", "logo": "assets/logo.jpg", "serviceLogo": "assets/unic-meet-logo.webp"};
 Q.push({s:'SERVICE',d:'marriage',t:'結婚を希望する時期を教えてください。',options:['1年以内に結婚したい','2年以内に結婚したい','いずれ結婚したいが、急いでいない','まだ決めていない','今は結婚を希望していない']});
 Q.push({s:'SERVICE',d:'concern',t:'今の恋愛・婚活で、一番気になっていることは？',options:['同じ恋愛パターンを繰り返してしまう','自信や自分の魅力の伝え方に悩んでいる','新しい出会いを増やしたい','結婚に向けた進め方を相談したい','今は大きな悩みはなく、まず自分を知りたい']});
 const TYPE_ORDER=[0,2,3,5,6,9,10,21];
@@ -657,7 +668,7 @@ function intro(){
   <button class="btn" data-a="start">自分の恋愛・婚活タイプを診断する</button>
   <a class="btn line" target="_blank" rel="noopener" href="${lineHref(toolText())}">この診断をLINEで送る</a>
   <button class="btn ghost small" data-a="copytool">リンク文をコピー</button>
-  <p class="note">※この診断は、恋愛傾向を楽しく知るためのオリジナルコンテンツです。心理学的に検証された心理検査や、医学的・科学的診断ではありません。占い（四柱推命）も、未来や相性を断定するものではなく、自己理解のヒントとして使います。</p></div>`;
+  </div>`;
 }
 function quiz(){
   const pos=st.pos,qi=ORDER[pos],q=Q[qi],cur=st.ans[qi],choices=q.options||CHOICES;
@@ -680,9 +691,9 @@ function birthForm(){
   const b=st.birth||{};
   return `<div class="hero"><h1 class="catch" style="font-size:22px">STEP 1：生年月日を入力</h1><p class="lead">このあと、恋愛傾向・価値観8問と、結婚希望時期・現在のお悩み各1問に回答します。</p></div>
   <div class="form"><div class="row"><label for="bd">生年月日（西暦・月・日／必須）</label><input id="bd" type="date" required min="1900-01-01" aria-describedby="birth-purpose birth-error" value="${b.date||''}" max="${todayJST()}"></div>
-  <p id="birth-purpose" class="note">生年月日・出生時刻・出生地のタイムゾーンは四柱推命の補足に使用します。入力情報はこの画面のメモリ内でのみ扱い、サーバー送信・ブラウザ保存・共有URLへの記載は行いません。</p>
+  <p id="birth-purpose" class="note">生年月日・出生時刻は四柱推命に使用します。保存・送信はしません。</p>
   <div class="row"><label for="bt">出生時刻（任意）</label><input id="bt" type="time" value="${b.time||''}" ${b.noTime!==false?'disabled':''}><label class="chk"><input id="bn" type="checkbox" ${b.noTime!==false?'checked':''}> 不明</label></div>
-  <div class="row"><label for="bz">出生地のタイムゾーン</label><select id="bz">${[['Asia/Tokyo','日本（Asia/Tokyo）'],['Asia/Seoul','韓国（Asia/Seoul）'],['Asia/Shanghai','中国（Asia/Shanghai）'],['Asia/Taipei','台湾（Asia/Taipei）'],['America/New_York','ニューヨーク'],['America/Los_Angeles','ロサンゼルス'],['Europe/London','ロンドン'],['Europe/Paris','パリ'],['Australia/Sydney','シドニー'],['UTC','UTC'],['other','その他（IANA名を入力）']].map(([v,l])=>`<option value="${v}" ${v===(b.zone||'Asia/Tokyo')?'selected':''}>${l}</option>`).join('')}</select><input id="bz-other" type="text" placeholder="例：Pacific/Honolulu" aria-label="その他のタイムゾーン" style="display:none"></div><p class="note">出生地の時計の時刻を入力してください。夏時間は地域・日付に応じて計算します。出生時刻不明の場合は時柱を出さず、節入り当日は年柱・月柱の候補を表示します。動物タイプは質問への回答だけで決まります。</p>
+  <div class="row"><label for="bz">出生地のタイムゾーン</label><select id="bz">${[['Asia/Tokyo','日本（Asia/Tokyo）'],['Asia/Seoul','韓国（Asia/Seoul）'],['Asia/Shanghai','中国（Asia/Shanghai）'],['Asia/Taipei','台湾（Asia/Taipei）'],['America/New_York','ニューヨーク'],['America/Los_Angeles','ロサンゼルス'],['Europe/London','ロンドン'],['Europe/Paris','パリ'],['Australia/Sydney','シドニー'],['UTC','UTC'],['other','その他（IANA名を入力）']].map(([v,l])=>`<option value="${v}" ${v===(b.zone||'Asia/Tokyo')?'selected':''}>${l}</option>`).join('')}</select><input id="bz-other" type="text" placeholder="例：Pacific/Honolulu" aria-label="その他のタイムゾーン" style="display:none"></div><p class="note">出生地の時刻・タイムゾーンを選んでください。時刻が分からなければ「不明」で進めます。</p>
   <p id="birth-error" role="alert" style="color:#c43858;margin:12px 0"></p>
   <button class="btn" data-a="go">10問の質問へ進む</button></div>`;
 }
@@ -703,7 +714,7 @@ function axesHTML(D,c){
 }
 function shichuHTML(sh,c){
   const S=STEMS.find(s=>s.k===sh.stem),years=[...new Set(sh.candidates.map(p=>p.year))].join(' ／ '),months=[...new Set(sh.candidates.map(p=>p.month))].join(' ／ ');
-  return sec('四柱推命から見る、生まれ持った性質',`<div class="calendar-card"><p class="eyebrow">YOUR BIRTH CHART</p><div class="birth-pillars">${[['年柱',years],['月柱',months],['日柱',sh.day],['時柱',sh.hour||'不明']].map(([label,value])=>`<div><small>${label}</small><strong>${value}</strong></div>`).join('')}</div><div class="stem-reading"><span class="stem-sign">${sh.stem}</span><div><p class="eyebrow">日干 ${S.k} ／ ${S.el}・${S.img}</p><h3>${S.nature}</h3></div></div><p><b>恋愛で大切にしやすいもの</b><br>${S.wants}。</p><p><b>心がほどける関係</b><br>${S.safe}。</p><p class="soft">四柱推命の伝統的な日干の象意に基づく一般的な補足です。心理質問による動物タイプとは別の情報で、性格や未来を断定するものではありません。</p>${!sh.known?'<p class="soft">出生時刻は不明のため、時柱は推測していません。</p>':''}${sh.ambiguous?'<p class="boundary-note">出生時刻不明の節入り日、または夏時間で時刻が重なるため、年柱・月柱は候補を併記しています。出生時刻が分かると絞り込めます。</p>':''}<details class="calendar-details"><summary>計算の基準を見る</summary><p>年柱は立春、月柱は各節の到達時刻で切り替え、入力したタイムゾーン（${esc(sh.zone)}）で比較しています。日柱は出生地の日付の0時で切り替えます。時柱は出生地の時計の時刻から算出し、23時台の時干も当日の日干を使用します。真太陽時補正は行っていません。流派により結果が異なる場合があります。</p><p>暦計算：lunar-javascript 1.7.7／対応範囲1900〜2099年。節入りの計算精度や流派差により、境界のごく近くでは専門家による確認もご検討ください。</p></details></div>`,c);
+  return sec('四柱推命から見る、生まれ持った性質',`<div class="calendar-card"><p class="eyebrow">YOUR BIRTH CHART</p><div class="birth-pillars">${[['年柱',years],['月柱',months],['日柱',sh.day],['時柱',sh.hour||'不明']].map(([label,value])=>`<div><small>${label}</small><strong>${value}</strong></div>`).join('')}</div><div class="stem-reading"><span class="stem-sign">${sh.stem}</span><div><p class="eyebrow">日干 ${S.k} ／ ${S.el}・${S.img}</p><h3>${S.nature}</h3></div></div><p><b>恋愛で大切にしやすいもの</b><br>${S.wants}。</p><p><b>心がほどける関係</b><br>${S.safe}。</p>${!sh.known?'<p class="soft">出生時刻不明のため、時柱は推測していません。</p>':''}${sh.ambiguous?'<p class="boundary-note">年柱・月柱が切り替わる日です。候補を併記しています。</p>':''}<details class="calendar-details"><summary>計算の基準を見る</summary><p>年柱は立春、月柱は各節の到達時刻で切り替え、入力したタイムゾーン（${esc(sh.zone)}）で比較しています。日柱は出生地の日付の0時で切り替えます。時柱は出生地の時計の時刻から算出し、23時台の時干も当日の日干を使用します。真太陽時補正は行っていません。流派により結果が異なる場合があります。</p><p>暦計算：lunar-javascript 1.7.7／対応範囲1900〜2099年。節入りの計算精度や流派差により、境界のごく近くでは専門家による確認もご検討ください。</p></details></div>`,c);
 }
 function safeHttps(value){try{const u=new URL(value);return u.protocol==='https:'?u.href:'';}catch{return '';}}
 function esc(s){return String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));}
@@ -715,12 +726,11 @@ function recommendation(ans){
 function actionHTML(r){
   const rec=r.recommendation;
   const advice={coaching:['恋愛パターンを整理する時間','気になっているパターンを、出来事・気持ち・行動に分けて振り返ってみましょう。'],confidence:['あなたの魅力を言葉にすること','得意なことや大切にしている価値観を、ひとつずつ書き出すところから始めてみませんか。'],event:['新しい出会いへの小さな一歩','安心して参加できるイベントを一つ探すなど、無理のない範囲で出会いを増やしてみましょう。'],marriage:['結婚に向けた具体的な計画','希望時期に向けて、出会い方や活動ペースを整理してみましょう。無理なく進められる順番を考えるところから始めてみましょう。'],consult:['自分に合った次の一歩を見つけること','急いで結論を出さず、今の気持ちを整理することから始めてみましょう。']}[rec.main];
-  const notes={coaching:'恋愛パターンのお悩みを選んだ回答からの提案です。',confidence:'自信や魅力の伝え方のお悩みを選んだ回答からの提案です。',event:'出会いを増やしたいという回答からの提案です。',marriage:'結婚希望時期と進め方のお悩みを選んだ回答からの提案です。',consult:'今回の希望時期・お悩みの回答を整理するための提案です。'};
-  return sec('今のあなたに必要なのは',`<div class="action"><h3>${advice[0]}</h3><p>${advice[1]}</p></div><p class="soft">${notes[rec.main]}性格や悩みを断定するものではありません。</p>`);
+  return `<section class="sec next-action-section"><h2><span>今のあなたに</span><strong>必要なのは</strong></h2><div class="action"><h3>${advice[0]}</h3><p>${advice[1]}</p></div></section>`;
 }
 function consultationHTML(){
  const t=st.res?T[st.res.type.n]:null,booking=safeHttps(CONFIG.BOOKING_URL),line=safeHttps(CONFIG.LINE_OA_URL),url=booking||line;
- return sec('自分の恋愛タイプを、もっと詳しく知りたい方へ',`<div class="consult-card"><div class="zoom-banner"><span>もっと詳しく自分を知る</span><b>無料・オンライン</b></div><div class="zoom-art"><div class="zoom-character">${im(t?t.id:'01','168px')}</div><div class="zoom-speech"><svg viewBox="0 0 48 36" aria-hidden="true"><rect x="2" y="5" width="28" height="26" rx="7" fill="currentColor"/><path d="M33 12l12-7v26l-12-7z" fill="currentColor"/></svg><p>婚活のプロと<br><strong>あなたに合う<br>次の一歩を。</strong></p></div></div><p class="eyebrow">YOUR TYPE, YOUR NEXT STEP</p><h3>Zoom無料診断で、<br>これからの恋愛・婚活を<br>一緒に考えませんか。</h3><p>${t?`「${esc(t.nm)}」という結果をヒントに、`:''}自分の恋愛タイプや、婚活で大切にしたいことを、もう少し深く知ってみませんか。</p><p>Zoomでの無料診断では、婚活のプロと一緒に診断結果を振り返り、今のお悩みや希望を整理します。あなたに合う今後の婚活方法を、一緒に考えます。</p>${url?`<a class="btn" data-role="zoom-consult" href="${esc(url)}" target="_blank" rel="noopener"><span class="cta-q">「私の婚活、何から始める？」</span><span class="cta-verb">を見つける</span><span class="cta-sub">Zoom無料診断</span></a>`:'<button class="btn" data-role="zoom-consult" disabled><span class="cta-q">「私の婚活、何から始める？」</span><span class="cta-verb">を見つける</span><span class="cta-sub">Zoom無料診断</span></button><p class="soft">無料診断の受付リンクは準備中です。</p>'}<ol class="line-steps"><li>${booking?'予約ページから、希望の日程を選ぶ':'公式LINEで「無料診断希望」とひとこと送る'}</li><li>担当者とZoomの日程を調整する</li><li>Zoomで婚活のプロと、これからの進め方を考える</li></ol><p class="soft">もしよければ、診断で出た動物タイプも${line?'LINEで送ってください':'教えてください'}。覚えていなくても、結果が手元になくても大丈夫です。今のお悩みからお話しいただけます。</p>${!booking?'<p class="soft">公式LINEに登録済みの方は再登録不要です。</p>':''}<p class="soft">診断結果は登録せずにすべて閲覧できます。生年月日・出生時刻・回答は予約フォームやLINEへ自動送信しません。</p></div>`);
+ return sec('自分の恋愛タイプを、もっと詳しく知りたい方へ',`<div class="consult-card"><div class="zoom-banner"><b>無料・オンライン</b></div><div class="zoom-next-title"><span>あなたに合う</span><strong>次の一歩を。</strong></div><div class="zoom-art"><div class="zoom-character">${im(t?t.id:'01','168px')}</div><div class="zoom-speech"><svg viewBox="0 0 48 36" aria-hidden="true"><rect x="2" y="5" width="28" height="26" rx="7" fill="currentColor"/><path d="M33 12l12-7v26l-12-7z" fill="currentColor"/></svg><p>婚活のプロと<br><strong>一緒に<br>考えよう。</strong></p></div></div><h3>Zoom無料診断</h3><p>${t?`「${esc(t.nm)}」のあなたに合う`: 'あなたに合う'}婚活方法を、婚活のプロと一緒に考えます。</p>${url?`<a class="btn" data-role="zoom-consult" href="${esc(url)}" target="_blank" rel="noopener"><span class="cta-q">「私の婚活、何から始める？」</span><span class="cta-verb">を見つける</span><span class="cta-sub">Zoom無料診断</span></a>`:'<button class="btn" data-role="zoom-consult" disabled><span class="cta-q">「私の婚活、何から始める？」</span><span class="cta-verb">を見つける</span><span class="cta-sub">Zoom無料診断</span></button><p class="soft">無料診断の受付リンクは準備中です。</p>'}<ol class="line-steps"><li>${booking?'予約ページから、希望の日程を選ぶ':'公式LINEで「無料診断希望」とひとこと送る'}</li><li>担当者とZoomの日程を調整する</li><li>Zoomで婚活のプロと、これからの進め方を考える</li></ol><p class="soft">もしよければ、診断で出た動物タイプも${line?'LINEで送ってください':'教えてください'}。結果が手元になくても大丈夫です。</p>${!booking?'<p class="soft">登録済みの方は再登録不要です。</p>':''}<p class="soft">生年月日・回答はLINEへ自動送信しません。</p></div>`);
 }
 function compatPanel(u,j){
   const c=compat(u,j),t=T[j],C=CONF[c.low];
@@ -738,23 +748,23 @@ function resultHTML(){
   <div class="you">あなたは</div><h1>${t.e} ${t.nm}</h1><span class="kind">${t.kind}</span>
   <p class="cc">${t.catch}</p><div class="tags">${t.tags.map(x=>`<span>#${x}</span>`).join('')}</div>
   <p class="sub-type">あなたの中には「${sub.e} ${sub.nm}」の要素もあります</p></div>
-  <p class="note">回答から見える傾向の参考情報です。10問での診断精度は未検証で、性格や相性を断定するものではありません。</p>`;
+  `;
   h+=sec('LOVE TYPE 解説',`<p>${t.desc}</p><div class="box" style="margin-top:10px"><h3>付き合った後の特徴</h3><p>${t.after}</p><h3 style="margin-top:10px">相手からどう見られやすいか</h3><p>${t.seen}</p></div>`,c);
   h+=sec('あなたの恋愛の強み',`<div class="box">${ul(t.str)}</div>`,c);
   h+=sec('あなたの恋愛のクセ',`<div class="box">${ul(t.habit)}</div><div class="box"><h3>本人が気づきにくいクセ</h3><p>${t.unnoticed}</p></div>`,c);
 
 
   h+=sec('惹かれやすい相手',`<div class="box"><p>${t.attract}</p></div>`,c);
-  h+=sec('長期的な関係を築きやすい相手',`<div class="box"><p>${t.long}</p></div><p class="soft">惹かれやすい相手と、長く安心できる相手は、必ずしも同じではありません。</p>`,c);
+  h+=sec('長期的な関係を築きやすい相手',`<div class="box"><p>${t.long}</p></div>`,c);
   h+=sec('恋愛・結婚で注意したいこと',`<div class="box"><h3>苦戦しやすい相手</h3><p>${t.hard}</p><h3 style="margin-top:10px">結婚生活で大切にすること</h3><p>${t.marry}</p><h3 style="margin-top:10px">婚活で気をつけるポイント</h3><p>${t.kon}</p></div><div class="box"><h3>おすすめの最初の一歩</h3><p>${t.act}</p></div>`,c);
-  h+=sec('会話が合う人・違いを補い合える人',`<p class="soft">以下は動物タイプの一般的な特徴を比較した参考情報です。今回質問していないコミュニケーションの軸を個別に測定したものではありません。</p>`+matchList(M.talk,'話が合いやすいタイプ')+matchList(M.val,'価値観が近いタイプ')+matchList(M.comp,'自分と違うけれど、補い合いやすいタイプ')+`<p class="soft">相性は点数で決まるものではありません。「違い」は、知っていれば魅力にもなります。</p>`,c);
+  h+=sec('会話が合う人・違いを補い合える人',`<p class="soft">タイプの特徴から見た相性のヒントです。</p>`+matchList(M.talk,'話が合いやすいタイプ')+matchList(M.val,'価値観が近いタイプ')+matchList(M.comp,'自分と違うけれど、補い合いやすいタイプ'),c);
   h+=sec('気になるタイプとの相性をチェック',`<div class="ptable" id="pt">${T.map((x,j)=>`<button data-a="pick" data-j="${j}">${im(x.id)}<span>${AN[j]}</span></button>`).join('')}</div><div id="cmp"><p class="soft">タイプを選ぶと、会話・愛情表現・距離感・スピード・価値観を比べられます。</p></div>`,c);
   h+=shichuHTML(sh,c);
   h+=actionHTML(r);
   h+=consultationHTML();
-  h+=sec('診断結果をシェアする',`<a class="btn line" target="_blank" rel="noopener" href="${lineHref(resText(t))}">LINEで友だちに結果を送る</a><a class="btn ghost small" target="_blank" rel="noopener" href="${lineHref(toolText())}">診断そのものを友だちに送る</a><p class="soft">送る相手はLINEの画面で選べます。生年月日や個別の回答は共有しません。</p><button class="btn" data-a="instagram">Instagramでシェア</button><p class="soft">ストーリーズ用画像を作成します。Instagramへ自動投稿はしません。</p><div id="story-output" aria-live="polite"></div>`);
+  h+=sec('診断結果をシェアする',`<a class="btn line" target="_blank" rel="noopener" href="${lineHref(resText(t))}">LINEで友だちに結果を送る</a><a class="btn ghost small" target="_blank" rel="noopener" href="${lineHref(toolText())}">診断そのものを友だちに送る</a><p class="soft">生年月日や回答は共有しません。</p><button class="btn" data-a="instagram">Instagramでシェア</button><p class="soft">ストーリーズ用画像を作成します。Instagramへ自動投稿はしません。</p><div id="story-output" aria-live="polite"></div>`);
   h+=serviceLink();
-  h+=`<button class="btn ghost small" style="margin-top:24px" data-a="retry">もう一度診断する</button><p class="foot">unic MEET ／ あなたの恋愛・婚活は何タイプ？<br>※本診断は心理検査・医学的診断ではなく、自己理解のためのエンターテインメントです。</p>`;
+  h+=`<button class="btn ghost small" style="margin-top:24px" data-a="retry">もう一度診断する</button><p class="foot">unic MEET ／ あなたの恋愛・婚活は何タイプ？<br>自己理解のためのタイプ診断です。</p>`;
   return h;
 }
 
@@ -809,7 +819,7 @@ function onClick(e){
   }
 }
 
-function serviceLink(){return `<section class="sec unic-about"><span class="about-tag">あなたらしい一歩を応援</span><a class="unic-brand-link" data-role="service-logo" href="https://quiet-pasca-d4a0c0.netlify.app/" target="_blank" rel="noopener" aria-label="unic MEETのサービス紹介を開く">${brandLogo()}<span class="brand-open" aria-hidden="true">↗</span></a><h2>恋愛も、婚活も。<br>あなたらしい一歩を。</h2><p>unic MEETは、恋愛・婚活の悩みや「これからどう進めたい？」に向き合うきっかけを届けます。あなたの一歩を支えるサービスを、紹介ページでご覧ください。</p><a class="btn service-cta" data-role="service-cta" href="https://quiet-pasca-d4a0c0.netlify.app/" target="_blank" rel="noopener"><span>unicのサービスを詳しく見る</span><b aria-hidden="true">→</b></a></section>`;}
+function serviceLink(){return `<section class="sec unic-about"><a class="unic-brand-link service-brand-panel" data-role="service-logo" href="https://quiet-pasca-d4a0c0.netlify.app/" target="_blank" rel="noopener" aria-label="unic MEETのサービス紹介を開く"><img class="service-logo-image" src="${IMGS.serviceLogo}" width="2172" height="724" alt="unic MEET — 魅力を磨く。出会いを育む。"><span class="brand-open" aria-hidden="true">↗</span></a><h2>恋愛も、婚活も。<br>あなたらしい一歩を。</h2><p>あなたの恋愛・婚活を支えるサービスをご紹介します。</p><a class="btn service-cta" data-role="service-cta" href="https://quiet-pasca-d4a0c0.netlify.app/" target="_blank" rel="noopener"><span>unicのサービスを詳しく見る</span><b aria-hidden="true">→</b></a></section>`;}
 function parseShared(search){
   const p=new URLSearchParams(search);if(!p.has('type')&&!p.has('sub'))return null;
   if(p.getAll('type').length!==1||p.getAll('sub').length!==1)return {invalid:true};
@@ -822,7 +832,7 @@ function sharedHTML(){
   const t=T[r.type],sub=T[r.sub];
   return `<p class="note">共有された結果です。あなた自身を診断した結果ではありません。</p><div class="res-hero" style="--c:${t.c}"><div class="pic">${im(t.id,'240px')}</div><h1>${t.e} ${t.nm}</h1><p>${t.catch}</p><p class="sub-type">サブタイプ：${sub.e} ${sub.nm}</p></div>`+
   sec('LOVE TYPE 解説',`<p>${t.desc}</p><p>${t.after}</p>`)+sec('恋愛の強み',ul(t.str))+sec('恋愛のクセ・注意点',ul(t.habit)+`<p>${t.unnoticed}</p><p>${t.hard}</p>`)+sec('相性のヒント',`<p>${t.long}</p><p>${t.marry}</p>`)+sec('サブタイプの解説',`<h3>${sub.nm}</h3><p>${sub.desc}</p>`)+
-  `<p class="note">タイプ別の一般的な解説です。送信者の生年月日・回答・個人的な鑑定やおすすめは共有していません。</p><button class="btn" style="margin-top:20px" data-a="start">自分も診断する</button>`+serviceLink();
+  `<button class="btn" style="margin-top:20px" data-a="start">自分も診断する</button>`+serviceLink();
 }
 
 if(typeof document!=='undefined'&&document.getElementById('app')){
